@@ -1,0 +1,29 @@
+{
+  "name": "01-fibonacci",
+  "version": "1.0.0",
+  "description": "How to implement Fibonacci following the TDD approach.",
+  "main": "src/fibonacci.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/*.mocha.js",
+    "test:mocha": "mocha test/*.mocha.js",
+    "test:jest": "jest"
+
+  },
+  "keywords": [
+    "fibonacci",
+    "tdd",
+    "mocha",
+    "chai",
+    "jest"
+  ],
+  "author": "Depold, Sascha <sdepold@ebay.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "jest": "^23.6.0",
+    "mocha": "^5.2.0"
+  }
+}
