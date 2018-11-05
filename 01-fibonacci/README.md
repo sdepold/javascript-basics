@@ -24,3 +24,4 @@ Negative index: Either return `undefined` or throw an exception. Please note tha
 2. Write the tests first following the TDD approach.
 3. Follow the Red (test is broken), Green (test works), Refactor (change implementation details) framework.
 4. Think about possible performance improvements.
+5. Add a function that returns a sequence from 0 through including `n`. E.g. `getSequence(5)` --> `[0, 1, 1, 2, 3, 5]`
