@@ -1,0 +1,22 @@
+{
+  "name": "02-fibonacci-plot",
+  "version": "1.0.0",
+  "description": "TBD",
+  "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "keywords": [],
+  "author": "Depold, Sascha <sdepold@ebay.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "supertest": "^3.3.0"
+  }
+}
