@@ -1,0 +1,23 @@
+{
+  "name": "03-inspiring-quotes",
+  "version": "1.0.0",
+  "description": "Prints an inspiring quote on the command line",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -t 10000"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "faker": "^4.1.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "wikiquote": "^0.4.5"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "sinon": "^7.1.1",
+    "sinon-stub-promise": "^4.0.0"
+  }
+}
