@@ -1,4 +1,14 @@
-# Fibonacci
+# JavaScript Basic 01 | Fibonacci
+
+In our first lesson we are going to write a function that calculates elements of the Fibonacci sequence.
+
+## Focus
+
+- Test Driven Development
+- Mocha / ChaiJS
+- Jest
+
+## Fibonacci numbers
 
 In mathematics, the Fibonacci numbers are the numbers in the following integer sequence, called the Fibonacci sequence, and
 characterized by the fact that every number after the first two is the sum of the two preceding ones:
@@ -23,5 +33,4 @@ Negative index: Either return `undefined` or throw an exception. Please note tha
 1. Think about the different test cases.
 2. Write the tests first following the TDD approach.
 3. Follow the Red (test is broken), Green (test works), Refactor (change implementation details) framework.
-4. Think about possible performance improvements.
-5. Add a function that returns a sequence from 0 through including `n`. E.g. `getSequence(5)` --> `[0, 1, 1, 2, 3, 5]`
+4. Think about possible performance improvements. Try to calculate `fib(100)`.

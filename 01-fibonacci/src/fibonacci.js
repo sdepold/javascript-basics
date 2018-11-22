@@ -1,10 +1,6 @@
 let cache = [];
 
-const getSequence = n => {
-  return [...Array(Number(n + 1)).keys()].map(get);
-};
-
-const get = n => {
+const fib = n => {
   const result = cache[n] || calc(n);
   return (cache[n] = result);
 };
@@ -17,11 +13,8 @@ const calc = n => {
   } else if (n === 1 || n === 2) {
     return 1;
   } else {
-    return get(n - 2) + get(n - 1);
+    return fib(n - 2) + fib(n - 1);
   }
 };
 
-module.exports = {
-  get,
-  getSequence
-};
+module.exports = fib;
