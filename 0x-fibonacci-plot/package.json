@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "test": "mocha",
+    "test:ui": "mocha -t 10000 test/ui/*.js"
   },
   "keywords": [],
   "author": "Depold, Sascha <sdepold@ebay.com>",
@@ -16,7 +18,9 @@
     "express": "^4.16.4"
   },
   "devDependencies": {
-    "jest": "^23.6.0",
-    "supertest": "^3.3.0"
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "supertest": "^3.3.0",
+    "webdriverio": "^4.14.0"
   }
 }

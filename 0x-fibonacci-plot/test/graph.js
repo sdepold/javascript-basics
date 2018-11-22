@@ -1,4 +1,5 @@
-const Graph = require("../graph");
+const expect = require('chai').expect;
+const Graph = require("../src/graph");
 const identity = {
   getSequence(n) {
     return [...Array(Number(n + 1)).keys()];
@@ -12,8 +13,8 @@ describe("graph", () => {
     graph = new Graph(identity);
   });
 
-  test("render renders the expected html", () => {
-    expect(graph.render(1, { id: 'test'}).trim()).toEqual(`
+  it("render renders the expected html", () => {
+    expect(graph.render(1, { id: 'test'}).trim()).to.deep.equal(`
         <div id="test" style="width: 100%; height: 800px;"></div>
 
         <script>
@@ -28,8 +29,8 @@ describe("graph", () => {
     `.trim());
   });
 
-  test("getDataPoints returns an array of data points", () => {
-    expect(graph._getDataPoints(5)).toEqual(
+  it("getDataPoints returns an array of data points", () => {
+    expect(graph._getDataPoints(5)).to.deep.equal(
       JSON.stringify([
         { y: 0 },
         { y: 1 },
