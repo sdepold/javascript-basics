@@ -1,4 +1,4 @@
-# JavaScript Basic 01 | Fibonacci
+# JavaScript Basic 01 | Test Driven Development
 
 In our first lesson we are going to write a function that calculates elements of the Fibonacci sequence.
 
