@@ -1,4 +1,3 @@
-const { expect } = require("chai");
 const quotesLib = require("../../src/quotes");
 const sinon = require("sinon");
 

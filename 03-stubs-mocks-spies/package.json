@@ -4,7 +4,7 @@
   "description": "Prints an inspiring quote on the command line",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -t 10000"
+    "test": "mocha -t 10000 test/**/*.test.js"
   },
   "author": "",
   "license": "ISC",

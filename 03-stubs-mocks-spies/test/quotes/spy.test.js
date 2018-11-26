@@ -14,7 +14,7 @@ describe("quotes", () => {
       quotes = quotesLib(wikiQuotes);
     });
 
-    it.only("should retry 5 times and then fail", () =>
+    it("should retry 5 times and then fail", () =>
       quotes.randomQuote().then(expect.fail).catch(err => {
         expect(err.message).to.equal("Couldn't find a random quote...");
         expect(wikiQuotes.search.callCount).to.equal(5);
