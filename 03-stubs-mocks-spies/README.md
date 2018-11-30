@@ -41,12 +41,12 @@ quotes().steve().then(console.log) // Will eventually render a quote from Steve 
 quotes().fromPerson('Confucius').then(console.log) // Will render a quote related to Confucius
 quotes().randomQuote().then(console.log) // Will render a random quote
 ```
-    </p>
+</p>
 </details>
 
 <details>
     <summary>Test that `quotes().steve()` returns a string</summary>
-    <p>
+<p>
 
 ```javascript
 describe('quotes', () => {
@@ -61,12 +61,12 @@ describe('quotes', () => {
 ```
 
 Note that this test will actually make an HTTP request
-    </p>
+</p>
 </details>
 
 <details>
     <summary>Prevent network request when calling `quotes().steve()` in tests</summary>
-    <p>
+<p>
 <br>
 The function <code>steve</code> is essentially just an alias for <code>fromPerson("steve jobs")</code>. Respectively, a network call can be prevented when the
 method <code>fromPerson</code> is temporarily overridden with a function that returns a resolved Promise.
@@ -94,12 +94,12 @@ describe('quotes', () => {
     });
 });
 ```
-    </p>
+</p>
 </details>
 
 <details>
     <summary>Reducing the boilerplate code</summary>
-    <p>
+<p>
 <br>
 In the previous step, we were manually overriding fromPerson. Instead of that, we can use sinon's stub method: https://sinonjs.org/releases/v7.1.1/stubs/
 
@@ -124,12 +124,12 @@ describe('quotes', () => {
     });
 });
 ```
-    </p>
+</p>
 </details>
 
 <details>
     <summary>Ensure that quotes().steve() is just an alias for quotes().fromPerson("steve jobs")</summary>
-    <p>
+<p>
 <br>
 Instead of overriding fromPerson and asserting that the result is the expected string, we can also assert that the function is called correctly. That's what mocks are for: https://sinonjs.org/releases/v7.1.1/mocks/
 <br>Mocks are used when you have certain expectations against an object which you want to verify. For that you describe the expected interactions with the mock, execute some action then and verify the expectations last.
@@ -151,13 +151,13 @@ describe('quotes', () => {
     });
 });
 ```
-    </p>
+</p>
 </details>
 
 
 <details>
     <summary>Recording method calls</summary>
-    <p>
+<p>
 <br>
 Sinon also allows you to record every call to a specific method. That concept is called a spy: https://sinonjs.org/releases/v7.1.1/spies/
 
@@ -172,5 +172,5 @@ describe('quotes', () => {
     });
 });
 ```
-    </p>
+</p>
 </details>
