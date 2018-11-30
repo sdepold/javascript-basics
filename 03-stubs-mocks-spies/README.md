@@ -45,7 +45,7 @@ quotes().randomQuote().then(console.log) // Will render a random quote
 </details>
 
 <details>
-    <summary>Test that `quotes().steve()` returns a string</summary>
+    <summary>Test that <code>quotes().steve()</code> returns a string</summary>
 <p>
 
 ```javascript
@@ -65,7 +65,7 @@ Note that this test will actually make an HTTP request
 </details>
 
 <details>
-    <summary>Prevent network request when calling `quotes().steve()` in tests</summary>
+    <summary>Prevent network request when calling <code>quotes().steve()</code> in tests</summary>
 <p>
 <br>
 The function <code>steve</code> is essentially just an alias for <code>fromPerson("steve jobs")</code>. Respectively, a network call can be prevented when the
@@ -128,7 +128,7 @@ describe('quotes', () => {
 </details>
 
 <details>
-    <summary>Ensure that quotes().steve() is just an alias for quotes().fromPerson("steve jobs")</summary>
+    <summary>Ensure that <code>steve()</code> is just an alias for <code>fromPerson("steve jobs")</code></summary>
 <p>
 <br>
 Instead of overriding fromPerson and asserting that the result is the expected string, we can also assert that the function is called correctly. That's what mocks are for: https://sinonjs.org/releases/v7.1.1/mocks/
