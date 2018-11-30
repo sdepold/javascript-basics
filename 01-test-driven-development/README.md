@@ -34,9 +34,9 @@ The quotient of two consecutive Fibonacci numbers is striving towards the golden
 
 Examples:
 
-f(5) / f(4) = 5 / 3 = 1.666666667
-f(7) / f(6) = 13 / 8 = 1.625
-f(10) / f(9) = 55 / 34 = 1.617647059
+- f(5) / f(4) = 5 / 3 = 1.666666667
+- f(7) / f(6) = 13 / 8 = 1.625
+- f(10) / f(9) = 55 / 34 = 1.617647059
 
 ## Instructions
 
@@ -54,32 +54,34 @@ f(10) / f(9) = 55 / 34 = 1.617647059
 
 <details>
     <summary>Write the tests first following the TDD approach!</summary>
-    <p>
-        ```javascript
-            const expect = require("chai").expect;
-            const fib = require("../src/fibonacci");
+<p>
 
-            describe("fib", () => {
-                describe("boundaries", () => {
-                    it("should throw an exception if fib is called with less than 0", () => {
-                    expect(() => fib(-1)).to.throw();
-                    });
-                });
+```javascript
 
-                [0, 1, 1, 2, 3, 5, 8, 13, 21].forEach((expectation, index) => {
-                    it(`should return ${expectation} for fib(${index})`, () => {
-                    expect(fib(index)).to.equal(expectation);
-                    });
-                });
+const expect = require("chai").expect;
+const fib = require("../src/fibonacci");
 
-                context("fibonacci quotient", () => {
-                    it("should strive towards the golden ratio", () => {
-                    expect(fib(8) / fib(7)).to.be.closeTo(1.61803, 0.1);
-                    });
-                });
-            });
-        ```
-    </p>
+describe("fib", () => {
+    describe("boundaries", () => {
+        it("should throw an exception if fib is called with less than 0", () => {
+        expect(() => fib(-1)).to.throw();
+        });
+    });
+
+    [0, 1, 1, 2, 3, 5, 8, 13, 21].forEach((expectation, index) => {
+        it(`should return ${expectation} for fib(${index})`, () => {
+        expect(fib(index)).to.equal(expectation);
+        });
+    });
+
+    context("fibonacci quotient", () => {
+        it("should strive towards the golden ratio", () => {
+        expect(fib(8) / fib(7)).to.be.closeTo(1.61803, 0.1);
+        });
+    });
+});
+```
+</p>
 </details>
 
 <details>
@@ -96,14 +98,15 @@ f(10) / f(9) = 55 / 34 = 1.617647059
 <details>
     <summary>Think about possible performance improvements</summary>
     <p>
-        Did you try to calculate `fib(100)` and realized that it's very slow?
-        What could you do to fix that?
+        <br>  
+Did you try to calculate <code>fib(100)</code> and realized that it's very slow?
+What could you do to fix that?
 
-        <ul>
-            <li>Introduce some sort of caching layer.</li>
-            <li>When you successfully calculated a Fibonacci number, store that information in the cache so that you can reuse it later.</li>
-            <li>Before you calculate anything, see if the result is already available in your cache.</li>
-            <li>Make sure to always use the cache in every step.</li>
-        </ul>
+<ul>
+    <li>Introduce some sort of caching layer.</li>
+    <li>When you successfully calculated a Fibonacci number, store that information in the cache so that you can reuse it later.</li>
+    <li>Before you calculate anything, see if the result is already available in your cache.</li>
+    <li>Make sure to always use the cache in every step.</li>
+</ul>
     </p>
 </details>
