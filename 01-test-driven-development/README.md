@@ -59,7 +59,7 @@ Examples:
 ```javascript
 
 const expect = require("chai").expect;
-const fib = require("../src/fibonacci");
+const fib = require("./src/fibonacci");
 
 describe("fib", () => {
     describe("boundaries", () => {
