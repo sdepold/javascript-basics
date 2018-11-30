@@ -8,11 +8,9 @@ describe("fib", () => {
     });
   });
 
-  describe("sequence", () => {
-    [0, 1, 1, 2, 3, 5, 8, 13, 21].forEach((expectation, index) => {
-      it(`should return ${expectation} for fib(${index})`, () => {
-        expect(fib(index)).to.equal(expectation);
-      });
+  [0, 1, 1, 2, 3, 5, 8, 13, 21].forEach((expectation, index) => {
+    it(`should return ${expectation} for fib(${index})`, () => {
+      expect(fib(index)).to.equal(expectation);
     });
   });
 

@@ -7,7 +7,7 @@ const fib = n => {
 
 const calc = n => {
   if (n < 0) {
-    throw new Error("oob exception");
+    throw new Error("Out Of Bounds exception");
   } else if (n === 0) {
     return 0;
   } else if (n === 1 || n === 2) {
