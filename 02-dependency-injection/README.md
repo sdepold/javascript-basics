@@ -17,7 +17,7 @@ Please implement the following specifications in a test driven way. You can deci
 
 ## Hints
 
-- The square of a number can be calculated via `Math.pow(someNumber, 2)` which means `someNumber ^ 2` or `someNumber * someNumber`.
+- The square of a number can be calculated via `Math.pow(someNumber, 2)` or `someNumber ** 2` or `someNumber * someNumber`.
 - The function of instruction #2 should return `[0, 1, 4, 9, 16]` for the input value 4.
 - It is possible to pass a reference to a function as an argument.
 
