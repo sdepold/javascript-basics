@@ -16,10 +16,18 @@ describe("index", () => {
   });
 
   it("should render a quote every 5 seconds", done => {
-    runApp(getQuote, 5).then(() => {
-      expect(getQuote.callCount).to.equal(5);
-      done();
-    });
-    clock.tick(30000);
+    runApp(getQuote, 5).then(done);
+
+    // Wait 1 second for the first quote to appear
+    clock.tick(5000);
+    expect(getQuote.callCount).to.equal(1);
+
+    // Wait 2 seconds for another 2 quotes
+    clock.tick(10000);
+    expect(getQuote.callCount).to.equal(3);
+
+    // Wait 2 seconds for another 2 quotes
+    clock.tick(10000);
+    expect(getQuote.callCount).to.equal(5);
   });
 });

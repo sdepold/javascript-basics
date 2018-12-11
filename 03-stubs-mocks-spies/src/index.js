@@ -11,13 +11,13 @@ const printQuote = getQuote => {
 
 const run = (getQuote, limit = 0) =>
   new Promise(resolve => {
-    printQuote(getQuote);
     const intervalId = setInterval(() => {
+      printQuote(getQuote);
+
       if (--limit === 0) {
         clearInterval(intervalId);
         return resolve();
       }
-      printQuote(getQuote);
     }, 5000);
   });
 
