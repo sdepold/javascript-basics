@@ -43,9 +43,11 @@
 
 e.g. `models/task.js`
 
-The following code snippet is describing a Task model:
+<details>
+<summary>The following code snippet is describing a Task model</summary>
+<p>
 
-```js
+```javascript
 const uuid = require("uuid/v4");
 
 const tasks = []; // This is our data storage for now
@@ -59,10 +61,16 @@ module.exports = {
 ```
 
 Please note, that function are currently synchronous and it might be a better idea to use promises instead.
+</p>
+</details>
 
 ### Example view
 
 e.g. `views/tasks.js`
+
+<details>
+<summary>The following snippet shows an exemplary Task related view</summary>
+<p>
 
 ```js
 module.exports = {
@@ -82,10 +90,16 @@ module.exports = {
     }
 };
 ```
+</p>
+</details>
 
 ### Example controller
 
 e.g. `controllers/tasks.js`
+
+<details>
+<summary>The following snippet shows a controller around tasks</summary>
+<p>
 
 ```js
 const { Router } = require("express");
@@ -103,3 +117,4 @@ tasksController.get("/tasks", (req, res) => {
 
 module.exports = tasksController;
 ```
+</p></details>
