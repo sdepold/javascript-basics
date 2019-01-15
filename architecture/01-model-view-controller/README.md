@@ -39,13 +39,13 @@
 - Loads every controller and adds it to the routings
 - Runs the app
 
-### Example model
-
-e.g. `models/task.js`
+### Examples
 
 <details>
 <summary>The following code snippet is describing a Task model</summary>
 <p>
+
+e.g. `models/task.js`
 
 ```javascript
 const uuid = require("uuid/v4");
@@ -64,13 +64,11 @@ Please note, that function are currently synchronous and it might be a better id
 </p>
 </details>
 
-### Example view
-
-e.g. `views/tasks.js`
-
 <details>
 <summary>The following snippet shows an exemplary Task related view</summary>
 <p>
+
+e.g. `views/tasks.js`
 
 ```js
 module.exports = {
@@ -93,13 +91,11 @@ module.exports = {
 </p>
 </details>
 
-### Example controller
-
-e.g. `controllers/tasks.js`
-
 <details>
 <summary>The following snippet shows a controller around tasks</summary>
 <p>
+
+e.g. `controllers/tasks.js`
 
 ```js
 const { Router } = require("express");
