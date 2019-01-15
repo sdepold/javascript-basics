@@ -21,6 +21,11 @@
     "chai": "^4.2.0",
     "mocha": "^5.2.0",
     "supertest": "^3.3.0",
+    "wdio-firefox-profile-service": "^0.1.3",
+    "wdio-mocha-framework": "^0.6.4",
+    "wdio-phantomjs-service": "^0.2.2",
+    "wdio-selenium-standalone-service": "0.0.11",
+    "wdio-spec-reporter": "^0.1.5",
     "webdriverio": "^4.14.0"
   }
 }

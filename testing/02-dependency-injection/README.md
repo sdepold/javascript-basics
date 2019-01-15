@@ -1,4 +1,4 @@
-# JavaScript Basic 02 | Dependency Injection
+# Testing 02 | Dependency Injection
 
 In this second lesson we are going to write a module that calculates a sequence of numbers.
 

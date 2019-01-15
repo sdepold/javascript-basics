@@ -1,4 +1,4 @@
-# JavaScript Basic 03 | Stubs, Mocks, Spies
+# Testing 03 | Stubs, Mocks, Spies
 
 TBD
 

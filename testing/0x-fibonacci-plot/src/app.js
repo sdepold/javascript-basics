@@ -2,9 +2,9 @@ const express = require("express");
 const app = express();
 const Graph = require("./graph");
 
-const fib = require("../../01-fibonacci/src/fibonacci");
+const fib = require("../../01-test-driven-development/src/fibonacci");
 const identity = x => x;
-const sequence = require("../../02-sequence/index");
+const sequence = require("../../02-dependency-injection/index");
 
 app.get("/", function(req, res) {
   const amount = Number(req.query.amount || 5);

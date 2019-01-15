@@ -1,4 +1,4 @@
-# JavaScript Basic 01 | Test Driven Development
+# Testing 01 | Test Driven Development
 
 In our first lesson we are going to write a function that calculates elements of the Fibonacci sequence.
 
@@ -98,7 +98,7 @@ describe("fib", () => {
 <details>
     <summary>Think about possible performance improvements</summary>
     <p>
-        <br>  
+        <br>
 Did you try to calculate <code>fib(100)</code> and realized that it's very slow?
 What could you do to fix that?
 
