@@ -1,0 +1,130 @@
+body {
+    background: #c5e5fb;
+    font-family: 'Roboto', sans-serif;
+}
+
+.content {
+    width: 400px;
+    margin: 100px auto;
+}
+
+.list-selector {
+    background: #3665f3;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.15);
+}
+
+.todos {
+    margin-top: 15px;
+    background: white;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.15);
+    padding: 40px;
+}
+
+.todos ul {
+    padding: 0;
+    margin: 0;
+}
+
+.todos ul, .todos li {
+    list-style-type: circle;
+}
+
+.todos li {
+    padding: 0;
+}
+
+.task {
+    color: RGBA(142, 157, 187, 1.00);
+    margin: 10px 0;
+    position: relative;
+    display: block;
+}
+
+.task.completed {
+    text-decoration: line-through;
+}
+
+.task i {
+    display: none;
+    position: absolute;
+    top: 0px;
+    cursor: pointer;
+}
+
+.task .title i {
+    display: inline-block;
+    position: relative;
+    font-size: 0.3em;
+    margin-right: 1em;
+}
+
+.task i.toggle-description {
+    right: 20px;
+}
+
+.task.completed i.toggle-description, .task.completed i.delete-task {
+    display: none;
+}
+
+.task.completed i {
+    font-weight: bold;
+}
+
+.task i.delete-task {
+    right: 0px;
+}
+
+.task:hover i {
+    display: inline-block;
+}
+
+.task .description {
+    border: 1px solid RGBA(172, 132, 230, 1.00);
+    padding: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.add-todo {
+    text-align: center;
+}
+
+.add-todo a {
+    background: #3665f3;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 20px;
+    position: relative;
+    top: -9px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.15);
+}
+
+form {
+    margin-top: 10px;
+}
+
+input, textarea {
+    background: #fafafa;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.15);
+    color: #111820;
+    font-family: inherit;
+    font-size: 0.875rem;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    border: none;
+}
+
+input[type=submit] {
+    cursor: pointer;
+    float: right;
+    width: inherit;
+}

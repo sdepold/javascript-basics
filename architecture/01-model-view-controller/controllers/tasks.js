@@ -1,22 +1,34 @@
 const { Router } = require("express");
-const tasksController = Router();
+const controller = Router();
 
-const Task = require("../models/task");
-const TasksView = require("../views/tasks");
+const Task = require(`../models/${global.sequelize ? "task.db" : "task"}`);
+const TasksView = require("../views/tasks/index");
 
-tasksController.get("/tasks", (req, res) => {
-  const tasks = Task.findAll();
-  const html = TasksView.index(tasks);
+controller.get("/tasks", async (req, res) => {
+  const tasks = await Task.findAll();
+  const html = TasksView(tasks);
 
   res.send(html);
 });
 
-tasksController.post("/tasks", (req, res) => {
-  Task.add({
-    title: req.body.title,
-    description: req.body.description
-  });
+controller.post("/tasks", async (req, res) => {
+  await Task.create(req.body, { fields: ["title", "description"] });
+
   res.redirect("/tasks");
 });
 
-module.exports = tasksController;
+controller.delete("/tasks/:id", async (req, res) => {
+  await Task.destroy({ where: { id: req.params.id } });
+
+  res.sendStatus(204);
+});
+
+controller.patch("/tasks/:id", async (req, res) => {
+  await Task.update(req.body, {
+    where: { id: req.params.id },
+    fields: ["status"]
+  });
+  res.sendStatus(204);
+});
+
+module.exports = controller;
