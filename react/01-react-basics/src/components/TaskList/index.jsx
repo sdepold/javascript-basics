@@ -21,9 +21,13 @@ export default class TaskList extends Component {
     return (
         <div className="todos">
             <ul>
-                {this.state.tasks && this.state.tasks.map((task, i) => (<Task model={task} key={i} />))}
+                {this.renderTasks()}
             </ul>
         </div>
     );
+  }
+
+  renderTasks() {
+    return this.state.tasks && this.state.tasks.map((task, i) => (<Task model={task} key={i} />))
   }
 }
