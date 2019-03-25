@@ -21,4 +21,19 @@ controller.post("/task-lists/:taskListId/tasks", async (req, res) => {
     res.status(201).json(task);
 });
 
+controller.get("/task-lists/:taskListId/tasks/:taskId", async (req, res) => {
+        const task = await Task.findOne({
+        where: {
+            id: req.params.taskId,
+            taskListId: req.params.taskListId
+        }
+    });
+
+    if (task) {
+        res.status(200).json(task);
+    } else {
+        res.sendStatus(404);
+    }
+});
+
 module.exports = controller;
