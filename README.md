@@ -19,3 +19,7 @@ Some lessons about JavaScript development
 ## React
 
 - [React basics](./react/01-react-basics)
+
+## DevOps
+
+- [Docker / Kubernetes](./dev-ops/01-docker-kubernetes)
