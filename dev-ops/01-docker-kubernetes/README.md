@@ -112,7 +112,7 @@ tess init
 tess login
 
 tess create namespace todoappnamespace --account {account}
-tess create app todoapp --account {sdepold}
+tess create app todoapp --account {account}
 tess kubectl create -f deployment.yaml
 ```
 
