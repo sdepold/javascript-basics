@@ -48,6 +48,9 @@ docker push <registry>/<username>/<project>:1.0.0
 
 TBD: What is it?
 
+Cheatsheet: https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources
+Info on DNS: https://tess.io/userdocs/network/kubedns/
+
 ### Steps
 
 #### Create a `deployment.yaml`
@@ -64,7 +67,7 @@ spec:
     metadata:
       annotations:
         application.tess.io/name: todoapp
-        account.tess.io/name: <username>
+        account.tess.io/name: {username}
       labels:
         run: tododeployment
     spec:
@@ -83,7 +86,7 @@ kind: Service
 metadata:
   annotations:
     application.tess.io/name: todoapp
-    account.tess.io/name: <username>
+    account.tess.io/name: {username}
   labels:
     name: app
   name: app
@@ -108,9 +111,15 @@ tess login -c 32
 tess init
 tess login
 
-tess kubectl create namespace todonamespace
-tess create app todoapp
+tess create namespace todoappnamespace --account {account}
+tess create app todoapp --account {sdepold}
 tess kubectl create -f deployment.yaml
+```
+
+#### Updating your app in the cloud
+
+```
+tess kubectl apply -f deployment.yaml
 ```
 
 #### Debugging
