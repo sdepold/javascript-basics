@@ -1,0 +1,13 @@
+{
+  "name": "03-dont-repeat-yourself",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "bounce.js": "^0.8.2",
+    "serve": "^11.0.0"
+  },
+  "scripts": {
+    "start": "serve"
+  }
+}

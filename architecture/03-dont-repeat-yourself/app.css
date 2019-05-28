@@ -1,0 +1,23 @@
+.box {
+    width: 100px;
+    height: 100px;
+    background: blue;
+    display: inline-block;
+    position: relative;
+}
+
+.box.yellow {
+    background: yellow;
+}
+
+.box.green {
+    background: green;
+}
+
+.box.red {
+    background: red;
+}
+
+.box.pink {
+    background: pink;
+}
