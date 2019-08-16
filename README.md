@@ -16,9 +16,9 @@ Some lessons about JavaScript development
 
 - [RESTful APIs](./apis/01-restful-apis)
 
-## React
+## Frameworks
 
-- [React basics](./react/01-react-basics)
+- [React basics](./frameworks/01-react-basics)
 
 ## DevOps
 
