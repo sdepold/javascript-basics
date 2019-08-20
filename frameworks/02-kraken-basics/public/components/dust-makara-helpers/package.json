@@ -1,0 +1,67 @@
+{
+  "name": "dust-makara-helpers",
+  "version": "4.2.0",
+  "description": "Internationalization helpers for dust",
+  "main": "browser.js",
+  "scripts": {
+    "test": "nyc tap test/*.js && nyc report",
+    "prepublish": "webpack browser.js browser.amd.js --output-library-target=amd --library=dust-usecontent-helper && webpack browser.js browser.umd.js --output-library-target=umd && webpack browser.js browser.browser.js --output-library-target=var --library=dustUsecontentHelper",
+    "coverage": "nyc report --reporter=lcov"
+  },
+  "keywords": [
+    "browser",
+    "i18n",
+    "dust"
+  ],
+  "author": {
+    "name": "Aria Stewart",
+    "email": "ariastewart@paypal.com"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krakenjs/dust-makara-helpers.git"
+  },
+  "dependencies": {
+    "aproba": "^1.0.1",
+    "bcp47-stringify": "^1.0.0",
+    "debuglog": "^1.0.1",
+    "dust-message-helper": "^4.0.2",
+    "dust-usecontent-helper": "^4.0.0",
+    "iferr": "^0.1.5",
+    "spud": "^2.0.1",
+    "verror": "^1.6.0"
+  },
+  "devDependencies": {
+    "bcp47": "^1.1.2",
+    "dustjs-linkedin": "~2.7.1",
+    "engine-munger": "^1.0.0",
+    "freshy": "^1.0.0",
+    "node-libs-browser": "^0.5.2",
+    "nyc": "^2.3.0",
+    "tap": "^1.2.0",
+    "webpack": "^1.10.1"
+  },
+  "readme": "dust-makara-helpers\n===================\n\nMakes it easy to set up the complementary dust `@useContent` and `@message` helpers, with configuration that loads data from `kraken-js`-style `.properties` bundles.\n\nThe content lookups are stored in the dust cache if it is enabled.\n\nThis module requires the full build of dust, with the compiler, since the `@message` helper compiles strings with dust.\n\n`@useContent` and `@message` can be used in the browser, but will need to be configured with other ways to load content, such as using requirejs.\n\nUse\n----\n\n```js\nvar dust = require('dustjs-linkedin');\nrequire('dust-makara-helpers').registerWith(dust, {\n    enableMetadata: true,\n    autoloadTemplateContent: false,\n    localeFromContext: function (ctx) {\n      var locale;\n      //anything special you want to do\n      return locale;\n    }\n});\n```\n\nOptions\n-------\n\n* `enableMetadata`: defaults to `false`. Turns on support for `<edit>` metadata tags in [dust-message-helper] to support in-place content editing.\n* `autoloadTemplateContent`: defaults to `true`. Allows you to disable automatic loading of content per template, allowing you to have a completely disjoint mapping between templates and content bundles, rather than a 1:1 mapping of template name to content bundle filename.\n* `localeFromContext`: Function. takes context as a parameter. Return a bcp47-style object or a locale string like `en-US`. Please see `localeFromContext` in this module's index.js file to see what you would be overriding.\n\n[dust-message-helper]: https://github.com/krakenjs/dust-message-helper\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/krakenjs/dust-makara-helpers/issues"
+  },
+  "homepage": "https://github.com/krakenjs/dust-makara-helpers#readme",
+  "location": "components/dust-makara-helpers",
+  "files": [
+    ".eslintrc",
+    ".jshintrc",
+    ".npmignore",
+    ".travis.yml",
+    "CHANGELOG.md",
+    "README.md",
+    "browser.amd.js",
+    "browser.browser.js",
+    "browser.js",
+    "browser.umd.js",
+    "common.js",
+    "index.js",
+    "test"
+  ]
+}

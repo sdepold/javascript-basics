@@ -1,0 +1,45 @@
+{
+  "name": "dust-usecontent-helper",
+  "version": "4.0.1",
+  "description": "A dust helper to load i18n content at render time",
+  "main": "index.js",
+  "scripts": {
+    "cover": "nyc report --reporter=lcov",
+    "prepublish": "webpack index.js index.amd.js --output-library-target=amd --library=dust-usecontent-helper && webpack index.js index.umd.js --output-library-target=umd && webpack index.js index.browser.js --output-library-target=var --library=dustUsecontentHelper",
+    "test": "nyc tap test/*.js && nyc report"
+  },
+  "author": {
+    "name": "Aria Stewart",
+    "email": "ariastewart@paypal.com"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "browser",
+    "dustjs",
+    "i18n",
+    "kraken"
+  ],
+  "devDependencies": {
+    "dust-message-helper": "^3.0.0",
+    "dustjs-linkedin": "~2.7.1",
+    "node-libs-browser": "^0.5.2",
+    "nyc": "^2.3.0",
+    "tap": "^1.2.0",
+    "webpack": "^1.10.1"
+  },
+  "readme": "dust-usecontent-helper\n======================\n\nA dustjs helper to load content bundles into the context for use by the [@message helper] or the [formatjs message helper].\n\nLead Maintainer: [Aria Stewart]\n\n[![Build Status]][travis]\n\nExample use\n-----------\n\n```\nvar dustjs = require('dustjs-linkedin');\nvar helper = require('dustjs-usecontent-helper');\nvar messagehelper = require('dustjs-message-helper');\nhelper(function (context, bundleName, cb) {\n    if (bundleName == 'test.properties') {\n        cb(null, {hello: \"world\"});\n    } else {\n        cb(new Error(\"not found\"));\n    }\n}).registerWith(dustjs);\nmessagehelper.registerWith(dustjs);\n\ndustjs.render('sometemplate', {}, function (err, result) {\n    console.log(err, result);\n});\n```\n\nAnd a template like this\n\n```\n{@useContent bundle=\"test.properties\"}\n    {@message key=\"hello\" /}\n{/useContent}\n```\n\nshould return the string `\"world\"`\n\n[@message helper]: https://github.com/krakenjs/dust-message-helper\n[formatjs message helper]: http://formatjs.io/dust/\n[Aria Stewart]: https://github.com/aredridel\n[travis]: https://travis-ci.org/krakenjs/dust-usecontent-helper\n[Build Status]: https://travis-ci.org/krakenjs/dust-usecontent-helper.svg?branch=master\n",
+  "readmeFilename": "README.md",
+  "_id": "dust-usecontent-helper@4.0.1",
+  "location": "components/dust-usecontent-helper",
+  "files": [
+    ".eslintrc",
+    ".jshintrc",
+    ".npmignore",
+    ".nyc_output",
+    ".travis.yml",
+    "README.md",
+    "index.js",
+    "output.js",
+    "test"
+  ]
+}

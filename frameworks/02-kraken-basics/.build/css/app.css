@@ -1,0 +1,134 @@
+/* line 1, css/app */
+body {
+  background: #c5e5fb;
+  font-family: 'Roboto', sans-serif;
+}
+/* line 6, css/app */
+.content {
+  width: 400px;
+  margin: 100px auto;
+}
+/* line 11, css/app */
+.list-selector {
+  background: #3665f3;
+  padding: 15px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+}
+/* line 20, css/app */
+.todos {
+  margin-top: 15px;
+  background: white;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  padding: 40px;
+}
+/* line 27, css/app */
+.todos ul {
+  padding: 0;
+  margin: 0;
+}
+/* line 32, css/app */
+.todos ul,
+.todos li {
+  list-style-type: circle;
+}
+/* line 36, css/app */
+.todos li {
+  padding: 0;
+}
+/* line 40, css/app */
+.task {
+  color: #8e9dbb;
+  margin: 10px 0;
+  position: relative;
+  display: block;
+}
+/* line 47, css/app */
+.task.completed {
+  text-decoration: line-through;
+}
+/* line 51, css/app */
+.task i {
+  display: none;
+  position: absolute;
+  top: 0px;
+  cursor: pointer;
+}
+/* line 58, css/app */
+.task .title i {
+  display: inline-block;
+  position: relative;
+  font-size: 0.3em;
+  margin-right: 1em;
+}
+/* line 65, css/app */
+.task i.toggle-description {
+  right: 20px;
+}
+/* line 69, css/app */
+.task.completed i.toggle-description,
+.task.completed i.delete-task {
+  display: none;
+}
+/* line 73, css/app */
+.task.completed i {
+  font-weight: bold;
+}
+/* line 77, css/app */
+.task i.delete-task {
+  right: 0px;
+}
+/* line 81, css/app */
+.task:hover i {
+  display: inline-block;
+}
+/* line 85, css/app */
+.task .description {
+  border: 1px solid #ac84e6;
+  padding: 10px;
+}
+/* line 90, css/app */
+.hidden {
+  display: none;
+}
+/* line 94, css/app */
+.add-todo {
+  text-align: center;
+}
+/* line 98, css/app */
+.add-todo a {
+  background: #3665f3;
+  padding: 10px 20px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 20px;
+  position: relative;
+  top: -9px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+}
+/* line 110, css/app */
+form {
+  margin-top: 10px;
+}
+/* line 114, css/app */
+input,
+textarea {
+  background: #fafafa;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  color: #111820;
+  font-family: inherit;
+  font-size: 0.875rem;
+  padding: 10px;
+  margin: 5px 0;
+  width: 100%;
+  border: none;
+}
+/* line 126, css/app */
+input[type=submit] {
+  cursor: pointer;
+  float: right;
+  width: inherit;
+}

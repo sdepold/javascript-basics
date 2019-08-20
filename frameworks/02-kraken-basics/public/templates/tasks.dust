@@ -1,0 +1,36 @@
+{>"layouts/master" /}
+
+{<body}
+    <div class="content">
+        <div class="list-selector">{@pre type="content" key="title"/}</div>
+        <div class="todos">
+            <ul>
+                {#tasks}
+                    <li class="task {status}" data-task-id={id}>
+                        <span class="title">
+                            <i class="far fa-circle complete"></i>
+                            {title}
+                        </span>
+                        <i class="far fa-trash-alt delete-task"></i>
+                        <i class="far fa-file-alt toggle-description"></i>
+                        <p class="description hidden">{description}</p>
+                    </li>
+                {/tasks}
+            </ul>
+        </div>
+            <div class="add-todo">
+                <a href="#">
+                    <i class="fas fa-plus"></i>
+                    {@pre type="content" key="newTask"/}
+                </a>
+            </div>
+            <div>
+                <form action="/tasks" method="POST" class="hidden">
+                    <input type="hidden" name="_csrf" value={_csrf}>
+                    <input placeholder="Title" type="text" name="title" required>
+                    <textarea placeholder="Description" name="description"></textarea>
+                    <input type="submit" value="Add task">
+                </form>
+            </div>
+    </div>
+{/body}

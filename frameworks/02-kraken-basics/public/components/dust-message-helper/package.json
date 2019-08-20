@@ -1,0 +1,49 @@
+{
+  "name": "dust-message-helper",
+  "version": "4.2.1",
+  "description": "A helper for runtime use of @pre and @message i18n tags",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/*.js",
+    "prepublish": "webpack index.js index.amd.js --output-library-target=amd --library=dust-message-helper && webpack index.js index.umd.js --output-library-target=umd && webpack index.js index.browser.js --output-library-target=var --library=dustMessageHelper"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aredridel/dust-pre-helper.git"
+  },
+  "keywords": [
+    "browser",
+    "dustjs",
+    "i18n"
+  ],
+  "author": {
+    "name": "Aria Stewart",
+    "email": "ariastewart@paypal.com"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/aredridel/dust-pre-helper/issues"
+  },
+  "homepage": "https://github.com/aredridel/dust-pre-helper",
+  "devDependencies": {
+    "dustjs-linkedin": "~2.7.1",
+    "freshy": "^1.0.0",
+    "node-libs-browser": "^0.5.2",
+    "tap": "^1.2.0",
+    "webpack": "^1.10.1"
+  },
+  "readme": "Dust @message Helper\n====================\n\nRenders content, piping it back through dust's compiler to resolve variable references. The features supported are roughly the same as Kraken's `localizr` and older `makara` modules.\n\nIt supports `@pre` as its tag as well, to support the exact templates already used with those modules.\n\nIt looks in a Yahoo `dust-intl-helper` compatible place in the context object for strings.\n\nHow to use it\n-------------\n\nIn your dust templates, like so:\n\n```\n{@message type=\"content\" key=\"greet.happy\" /}\n```\n\nAnd rendered with a context like this:\n\n```\ndust.render('template', { intl: { messages: { \"greet.happy\": \"Hello, {who}!\" } }, who: \"world\" }, function (err, out) {\n    console.log(out);\n});\n```\n\nWill give output `Hello, world!`\n\nIn-place editing support\n------------------------\n\nTo support in-place editing translation systems, `<edit>` tags can be emitted around content. If you pass `enableMetadata: true` to the helper module's options, `<edit>` tags will surround content strings. Those used in contexts where HTML is inappropriate (such as inside attributes) can disable this on a case by case basis with `noEdit=\"true\"` in the helper tag.\n\nDifferences from localizr\n-------------------------\n\n* No support for newlines in attribute values in tags. No more `{@pre sep=\"\\r\\n\" /}`, for example.\n* Attribute values must be quoted. `{@pre type=content /}` must now be `{@pre type=\"content\" /}`\n",
+  "readmeFilename": "README.md",
+  "_id": "dust-message-helper@4.2.1",
+  "location": "components/dust-message-helper",
+  "files": [
+    ".eslintrc",
+    ".jshintrc",
+    ".npmignore",
+    ".travis.yml",
+    "LICENSE.txt",
+    "README.md",
+    "index.js",
+    "test"
+  ]
+}

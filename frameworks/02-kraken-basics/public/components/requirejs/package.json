@@ -1,0 +1,35 @@
+{
+  "name": "requirejs",
+  "description": "Node adapter for RequireJS, for loading AMD modules. Includes RequireJS optimizer",
+  "version": "2.3.6",
+  "homepage": "http://github.com/jrburke/r.js",
+  "author": {
+    "name": "James Burke",
+    "email": "jrburke@gmail.com",
+    "url": "http://github.com/jrburke"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrburke/r.js.git"
+  },
+  "main": "require",
+  "bin": {
+    "r.js": "./bin/r.js",
+    "r_js": "./bin/r.js"
+  },
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "readme": "# requirejs\n\nRequireJS for use in Node. includes:\n\n* r.js: the RequireJS optimizer, and AMD runtime for use in Node.\n* require.js: The browser-based AMD loader.\n\nMore information at http://requirejs.org\n\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/jrburke/r.js/issues"
+  },
+  "location": "components/requirejs",
+  "files": [
+    "README.md",
+    "bin",
+    "require.js"
+  ]
+}

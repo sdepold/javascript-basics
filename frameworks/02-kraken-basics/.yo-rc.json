@@ -1,0 +1,14 @@
+{
+  "generator-kraken": {
+    "taskModule": "grunt",
+    "lintModule": "eslint",
+    "description": "Basic Kraken example",
+    "author": "Sascha Depold",
+    "templateModule": "makara",
+    "i18n": "i18n",
+    "componentPackager": false,
+    "cssModule": "less",
+    "jsModule": "requirejs",
+    "useJson": null
+  }
+}
