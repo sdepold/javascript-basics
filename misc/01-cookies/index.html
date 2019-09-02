@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>🍪</title>
+    <style>
+        .content {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        .media {
+            background: lightblue;
+            width: 100%;
+            text-align: center;
+            padding: 1em;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        form label {
+            display: block;
+            margin: 1em 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="media">
+            <iframe src="https://giphy.com/embed/C9x8gX02SnMIoAClXa" width="266" height="480" frameBorder="0"
+                class="giphy-embed" allowFullScreen></iframe>
+            <p><a href="https://giphy.com/gifs/C9x8gX02SnMIoAClXa">via GIPHY</a></p>
+        </div>
+
+        <h2>How do you like it?</h2>
+
+        <div id="comments">…</div>
+
+        <form action="#" method="POST">
+            <label>
+                Username:<br>
+                <input type="text" name="username">
+            </label>
+
+            <label>
+                Message:<br>
+                <textarea name="message" rows="5" cols="100"></textarea>
+            </label>
+
+            <input type="submit">
+        </form>
+    </div>
+
+    <script src="handle-form.js"></script>
+</body>
+
+</html>
