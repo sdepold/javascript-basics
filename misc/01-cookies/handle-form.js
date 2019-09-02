@@ -21,7 +21,11 @@ document.querySelector("form").addEventListener("submit", function(e) {
           "Content-Type": "application/json"
         }
       })
-    ).then(()=>window.location.reload());
+    )
+    .then(() => {
+      document.cookie = "form=;expires=0";
+      window.location.reload();
+    });
 });
 
 fetch(`https://api.myjson.com/bins/${jsonId}`)
@@ -29,7 +33,7 @@ fetch(`https://api.myjson.com/bins/${jsonId}`)
   .then(data => {
     const commentsDiv = document.querySelector("#comments");
 
-    commentsDiv.innerHTML="";
+    commentsDiv.innerHTML = "";
 
     (data.comments || []).forEach(comment => {
       const div = document.createElement("div");
@@ -40,5 +44,5 @@ fetch(`https://api.myjson.com/bins/${jsonId}`)
       div.appendChild(content);
       commentsDiv.appendChild(div);
     });
+  });
 
-});
