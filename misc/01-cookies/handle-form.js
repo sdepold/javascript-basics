@@ -23,7 +23,7 @@ document.querySelector("form").addEventListener("submit", function(e) {
       })
     )
     .then(() => {
-      document.cookie = "form=;expires=0";
+      document.cookie = "form=;expires=Thu, 01 Jan 1970 00:00:01 GMT";
       window.location.reload();
     });
 });
