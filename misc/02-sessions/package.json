@@ -1,0 +1,21 @@
+{
+  "name": "02-sessions",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "express-session-sequelize": "^2.1.0",
+    "morgan": "^1.9.1",
+    "require-dir-all": "^0.4.15",
+    "sequelize": "^5.18.4",
+    "sqlite3": "^4.1.0"
+  },
+  "scripts": {
+      "start": "node index"
+  }
+}
