@@ -23,3 +23,8 @@ Some lessons about JavaScript development
 ## DevOps
 
 - [Docker / Kubernetes](./dev-ops/01-docker-kubernetes)
+
+## Misc
+
+- [Cookies](./misc/01-cookies)
+- [Sessions](./misc/02-sessions)
