@@ -1,5 +1,18 @@
 # Data Types | 01 Linked Lists
 
+## Arrays in JS
+
+- https://stackoverflow.com/a/5048482
+- http://es5.github.io/#x15.4
+- Array in JS are essentially objects and in contrast to other programming languages, the memory for arrays are not contiguous
+
+## Idea
+
+- A linked list is a list of nodes which consist of an information and a pointer(s) to other node
+- The head of the list is essentially only a pointer to a node.
+- Singly linked lists have nodes that only point to the next node
+- Doubly linked lists have nodes that points to the previous and the next node
+
 ## Advantages of linked lists
 
 - Linked List is Dynamic data Structure.
@@ -7,6 +20,10 @@
 - Insertion and Deletion Operations are Easier
 - Efficient Memory Utilization ,i.e no need to pre-allocate memory
 - Faster Access time,can be expanded in constant time without memory overhead
+
+## Disadvantages
+- Arrays are faster when it comes to random access. They are clear winners here as random access needs linear time in case of linked lists, but only constant time in arrays.
+- Arrays are faster when you iterate from the beginning to the end because of spatial and temporal locality because of which they can make use of cache.
 
 ## Methods of linked lists
 
