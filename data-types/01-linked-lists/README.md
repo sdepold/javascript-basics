@@ -4,6 +4,7 @@
 
 - https://stackoverflow.com/a/5048482
 - http://es5.github.io/#x15.4
+- Typed arrays: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays
 - Array in JS are essentially objects and in contrast to other programming languages, the memory for arrays are not contiguous
 
 ## Idea
