@@ -24,6 +24,10 @@ Some lessons about JavaScript development
 
 - [Docker / Kubernetes](./dev-ops/01-docker-kubernetes)
 
+## Data Types
+
+- [Linked Lists](./data-types/01-linked-lists)
+
 ## Misc
 
 - [Cookies](./misc/01-cookies)
