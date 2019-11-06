@@ -28,6 +28,10 @@ Some lessons about JavaScript development
 
 - [Linked Lists](./data-types/01-linked-lists)
 
+## Tools
+
+- [Redis](./tools/01-redis)
+
 ## Misc
 
 - [Cookies](./misc/01-cookies)

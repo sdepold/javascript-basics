@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+const { getClient } = require("../models/redis-client");
+
+setTimeout(() => {
+  const client = getClient();
+
+  if (!client) {
+    console.log("No redis connection possible.");
+    process.exit(1);
+  }
+
+  console.log("Let there be messages!");
+
+  client.on("message", (channel, message) => {
+    console.log(`Received message: ${message}`);
+  });
+
+  client.subscribe("notification");
+}, 1000);
