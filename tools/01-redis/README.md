@@ -48,6 +48,7 @@ The application is reading the joke of the day through an API that is rate-limit
     2. Cache only the retrieved joke (Check models/joke.caching.js for a working solution)
 3. Implement page impression tracking that stores all impressions separated by day in Redis.
 4. Can you think of a way to add the number of todays impressions into the cached HTML (See step 2.1.)? 
+5. In case you create more than a single key in redis for a single day, let's convert it to hashes! See https://redis.io/commands#hash
 
 ## Pub Sub
 
