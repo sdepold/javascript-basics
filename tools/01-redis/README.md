@@ -58,7 +58,7 @@ The application is reading the joke of the day through an API that is rate-limit
     - This sends a POST request against /message with the body `{"message":"hello there"}`
 - The endpoint will publish your message to redis and www-pubsub is listening von messages on a specific channel and prints the received messages to console
 
-### Exercise
+### Bonus exercise
 
 - Extend the logic in www-pubsub to publish a response event with random a message that is observed in the message endpoint and returned to the requestor
 

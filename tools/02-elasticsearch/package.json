@@ -1,0 +1,19 @@
+{
+  "name": "02-elasticsearch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "02-elasticsearch": "import-wiki-dump.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.5.0",
+    "bluebird": "^3.7.2",
+    "xml2js": "^0.4.22"
+  }
+}
