@@ -65,3 +65,31 @@ client
 
 - Indexes can be optimized for particular languages: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html
 - Search queries can contain fuzziness: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html#supported-flags (Search for FUZZY; "Abstellraum~2)
+
+## Bonus exercise
+
+### Highlighting
+
+Extend the UI code to highlight the given search term, so that I can easily understand why the search returned me the respective entry
+
+### Employee Search
+
+Check out: https://ikeptwalking.com/elasticsearch-sample-data/
+You will find nice sample data of employee data which has the following format:
+
+```
+{
+    "FirstName": "JOYE",
+    "LastName": "WIATR",
+    "Designation": "CEO",
+    "Salary": 144000,
+    "DateOfJoining":"25/05/2009"
+    "Address": "9068 SW. Grove St. Waynesboro, PA 17268",
+    "Gender": "Female",
+    "Age": 58,
+    "MaritalStatus": "Unmarried",
+    "Interests": "Renting movies,Scuba Diving,Snowboarding,Butterfly Watching,Dumpster Diving,Badminton,Church/church activities"
+}
+```
+
+Task: Create a website that allows searching for employee names as well as interests. E.g. I want to be able to search for all people interested in movies with a certain last name.
