@@ -31,6 +31,7 @@ Some lessons about JavaScript development
 ## Tools
 
 - [Redis](./tools/01-redis)
+- [ElasticSearch](./tools/02-elasticsearch)
 
 ## Misc
 
