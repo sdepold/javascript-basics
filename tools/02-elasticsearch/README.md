@@ -5,7 +5,7 @@
 ### Preparation
 
 1. Download a copy of any wikipedia dump (e.g. https://dumps.wikimedia.org/dewikibooks/20191201/dewikibooks-20191201-pages-articles-multistream.xml.bz2)
-2. Upzip it
+2. Unzip it
 3. Run the following command: bin/import-wiki-dump.js path/to/your/dump.xml
 4. Optionally remove a good chunk of the dump since it's quite big
 5. Check the output of the command (You'll see a randomly chosen page of the parsed dump)
@@ -30,7 +30,7 @@ You can boost the weight of a field through the ^ operator:
 {
     "query": {
         "simple_query_string": {
-            "query": "Mathematik", 
+            "query": "Mathematik",
             "fields": ["title^5", "text"]
         }
     }
@@ -60,6 +60,79 @@ client
   })
   .then(res => console.log(res.body.hits));
 ```
+
+### Samples
+
+Next to this file, you can find a `sample.xml` file which contains references to German tales and was tweaked for demo purposes. You can import it into ElasticSearch via:
+
+```
+bin/import-wiki-dump.js sample.xml wiki-sample
+```
+
+Afterwards you can find the default indexing _misbehaving_ by searching for the term "rot" (German word for the color red):
+
+```
+curl -d '{"query": {"simple_query_string": {"query": "Rot", "fields": ["title", "text"]}}}' -H 'Content-Type: application/json' -X GET 127.0.0.1:9200/wiki-sample/_search
+```
+
+This will not return any hits although the content actually contains lots of references to the color red (e.g. Rotes Buch --> red book). This happens due to the index being English based by default.
+
+Let's create a new index `wiki-sample-de` and configure it to use the German stemmer:
+
+```
+curl -d '{
+   "mappings": {
+     "properties": {
+       "title": {
+         "type": "text",
+         "analyzer": "my_analyzer"
+       },
+       "text": {
+         "type": "text",
+         "analyzer": "my_analyzer"
+       }
+     }
+    },
+    "settings": {
+        "analysis" : {
+            "analyzer" : {
+                "my_analyzer" : {
+                  "tokenizer": "standard",
+                    "filter" : ["lowercase", "my_stemmer"]
+                }
+            },
+            "filter" : {
+                "my_stemmer" : {
+                    "type" : "stemmer",
+                    "name" : "german2"
+                }
+            }
+        }
+    }
+}' -H 'Content-Type: application/json' -X PUT 127.0.0.1:9200/wiki-sample-de
+```
+
+Import the sample:
+
+```
+bin/import-wiki-dump.js sample.xml wiki-sample-de
+```
+
+Search again:
+
+```
+curl -d '{"query": {"simple_query_string": {"query": "Rot", "fields": ["title", "text"]}}}' -H 'Content-Type: application/json' -X GET 127.0.0.1:9200/wiki-sample-de
+```
+
+#### Important
+
+The command above is creating a >new< index that 
+
+1. defines an analyzer called `my_analyzer` which uses the standard tokenizer and a the filters lowercase (every search is case insensitive) and a filter `my_stemmer`
+2. defines a filter called `my_stemmer` that is using a German stemming algorithm
+3. declares which properties we are going to put into the index and which analyzers to use for which property
+
+Only because of the mappings section, any created analyzer will actually have an effect. They are ignored otherwise.
 
 ## Random facts about ElasticSearch
 

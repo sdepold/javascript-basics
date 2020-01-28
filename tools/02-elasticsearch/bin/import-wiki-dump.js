@@ -13,8 +13,7 @@ const client = new Client({ node: "http://localhost:9200" });
   const data = await xmlParser.parseStringPromise(dataXml);
   const pages = data.mediawiki.page.map(p => ({
     title: p.title[0],
-    text: p.revision[0] && p.revision[0].text[0] && p.revision[0].text[0]._,
-    id: Number(p.id[0])
+    text: p.revision[0] && p.revision[0].text[0] && p.revision[0].text[0]._.trim()
   }));
 
   console.log("Random page found:");
@@ -23,13 +22,15 @@ const client = new Client({ node: "http://localhost:9200" });
   delete dataXml;
   delete data;
 
-  // await Bluebird.mapSeries(pages, page =>
-  //   client.index({
-  //     index: "wiki",
-  //     body: {
-  //       title: page.title,
-  //       text: page.text
-  //     }
-  //   })
-  // );
+  console.log('Importing into index:', process.argv[3] || "wiki-sample")
+
+  await Bluebird.mapSeries(pages, page =>
+    client.index({
+      index: process.argv[3] || "wiki-sample",
+      body: {
+        title: page.title,
+        text: page.text
+      }
+    })
+  );
 })();
