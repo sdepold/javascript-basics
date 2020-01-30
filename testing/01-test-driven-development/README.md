@@ -24,9 +24,9 @@ starting point of the sequence, and each subsequent number is the sum of the pre
 
 ### Definition for this lesson
 
-General rule: `f(n) = f(n-1) + f(n-2)`
-Seed values: `f(0) = 0, f(1) = 1`
-Negative index: Either return `undefined` or throw an exception. Please note that there is a definition for negative indices: https://en.wikipedia.org/wiki/Fibonacci_number#Negafibonacci
+- General rule: `f(n) = f(n-1) + f(n-2)`
+- Seed values: `f(0) = 0, f(1) = 1`
+- Negative index: Either return `undefined` or throw an exception. Please note that there is a definition for negative indices: https://en.wikipedia.org/wiki/Fibonacci_number#Negafibonacci
 
 ### Relation to the golden ratio
 
