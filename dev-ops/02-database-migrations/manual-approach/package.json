@@ -1,0 +1,10 @@
+{
+  "name": "manual-approach",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "faker": "^4.1.0",
+    "sqlite3": "^4.1.1"
+  }
+}

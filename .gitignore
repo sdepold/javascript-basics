@@ -2,3 +2,4 @@ node_modules
 *.sqlite
 yarn-error.log
 launch.json
+*.db
