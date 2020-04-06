@@ -1,0 +1,14 @@
+{
+  "name": "02-automatic-approach",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "sequelize-cli": "^5.5.1"
+  },
+  "dependencies": {
+    "faker": "^4.1.0",
+    "sequelize": "^5.21.5",
+    "sqlite3": "^4.1.1"
+  }
+}
