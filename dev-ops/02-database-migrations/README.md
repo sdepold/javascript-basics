@@ -35,3 +35,15 @@ During the initial development phase of smaller projects, schemas are usually mi
 The moment more than one developer is involved, things become harder to maintain and communicate.
 --> Every change to the schema needs to be discussed and synchronized with all developers.
 
+### Automatic migrations
+
+...
+
+### Framework independency
+
+## Homework
+
+Extend the automatic approach example with a feature to search for hobbies. The data type could be a list of strings,
+a comma separated string or you could go crazy and introduce a many to many relationship.
+
+Additionally, feel free to create a Web UI for the search functionality.
