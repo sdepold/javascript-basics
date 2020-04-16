@@ -8,10 +8,13 @@ be used to remember arbitrary pieces of information that the user previously ent
 
 ```javascript
 // Converting cookie into an object
-const cookies = document.cookie.split(";").reduce((acc, item)=>{const split = item.split("="); return {...acc, [split[0].trim()]: split[1]}}, {})
+const cookies = document.cookie.split(";").reduce((acc, item) => {
+  const split = item.split("=");
+  return { ...acc, [split[0].trim()]: split[1] };
+}, {});
 
 // Adding a cookie
-document.cookie = "key=value; <attributes>"
+document.cookie = "key=value; <attributes>";
 ```
 
 ## Setting cookies through HTTP
@@ -24,9 +27,11 @@ Set-Cookie: sessionToken=abc123; Expires=Wed, 09 Jun 2021 10:18:14 GMT
 ```
 
 ## Types of cookies
+
 --> https://en.wikipedia.org/wiki/HTTP_cookie#Terminology
 
 ## Misc
+
 ### Deleting a cookie
 
 In order to remove a cookie, you can set its Expires attribute to 0.
@@ -42,3 +47,11 @@ In order to remove a cookie, you can set its Expires attribute to 0.
 
 https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
 https://en.wikipedia.org/wiki/HTTP_cookie
+
+## Homework
+
+We want to put some artificial pressure on the user and introduce a counter. Once the user
+entered something into any of the input fields, the page should render a countdown starting at 
+3 minutes (or whatever). If the users didn't submit the comment in that time frame, the content is
+automatically cleared from the form and the user has to start all over again. The counter shall 
+remain after page refresh and removed upon submit.
