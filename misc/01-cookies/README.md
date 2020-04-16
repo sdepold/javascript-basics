@@ -55,3 +55,6 @@ entered something into any of the input fields, the page should render a countdo
 3 minutes (or whatever). If the users didn't submit the comment in that time frame, the content is
 automatically cleared from the form and the user has to start all over again. The counter shall 
 remain after page refresh and removed upon submit.
+
+Additionally, you can have a look at the [isomorphic-cookie](https://www.npmjs.com/package/isomorphic-cookie) library and
+replace our custom cookie manipulation logic with it.
