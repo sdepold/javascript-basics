@@ -27,6 +27,8 @@ Some lessons about JavaScript development
 ## Data Types
 
 - [Linked Lists](./data-types/01-linked-lists)
+- [Stacks](./data-types/02-stacks)
+- [Queues](./data-types/03-queues)
 
 ## Tools
 

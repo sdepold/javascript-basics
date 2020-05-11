@@ -9,7 +9,7 @@
 
 ## Idea
 
-- A linked list is a list of nodes which consist of an information and a pointer(s) to other node
+- A linked list is a list of nodes which consist of an information and a pointer(s) to other node(s)
 - The head of the list is essentially only a pointer to a node.
 - Singly linked lists have nodes that only point to the next node
 - Doubly linked lists have nodes that points to the previous and the next node
