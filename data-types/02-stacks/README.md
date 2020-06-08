@@ -33,7 +33,7 @@ class Stack {
   pop() {}
 
   // return current top-most/last value
-  peek() {}
+  peak() {}
 }
 ```
 
