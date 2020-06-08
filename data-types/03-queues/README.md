@@ -28,7 +28,7 @@ class Queue {
   dequeue() {}
   
   // Returns oldest item in the list
-  peek() {}
+  peak() {}
 }
 ```
 
