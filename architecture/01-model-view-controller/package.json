@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "start:sequelize": "node index.sequelize.js",
+    "start:db": "node index.db.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -15,6 +15,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
+    "pg": "^8.3.3",
     "require-dir-all": "^0.4.15",
     "sequelize": "^4.42.0",
     "sqlite3": "^4.0.6",

@@ -5,24 +5,25 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const Sequelize = require("sequelize");
 const requireAll = require("require-dir-all");
-const cors = require('cors');
+const cors = require("cors");
 
 app.use(morgan("dev"));
-app.use(express.static('public'));
+app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(
   bodyParser.urlencoded({
-    extended: true
+    extended: true,
   })
 );
 
-global.sequelize = new Sequelize(null, null, null, {
-  dialect: "sqlite",
-  storage: "database.sqlite"
-});
+const sequelizeArgs = process.env.DATABASE_URL
+  ? [process.env.DATABASE_URL]
+  : ["todo-app", "postgres", "postgres", { dialect: "postgres" }];
 
-Object.values(requireAll("./controllers")).forEach(c => app.use(c));
+global.sequelize = new Sequelize(...sequelizeArgs);
+
+Object.values(requireAll("./controllers")).forEach((c) => app.use(c));
 
 global.sequelize.sync().then(() => {
   app.listen(port, () => {
