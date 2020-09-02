@@ -2,9 +2,28 @@
 
 ## What is it?
 
+SOLID describes 5 principles for designing and developing maintainable object-oriented software.
+
 ### S — Single Responsibility Principle(S.R.P)
 
 > A class should have one, and only one, reason to change.
+
+This can be applied to classes, software components or even microservices.
+
+#### Why would you care?
+
+- Makes implementation easier (to write and understand)
+- Prevents unexpected side-effects for future changes
+- Eases collaboration
+- Dependency management
+
+#### How?
+
+Make sure your class/component/microservice only focusses on one particular responsibility!
+
+Question: What is the responsibility of your class/component/microservice?
+
+If your answer includes the word “and”, you’re most likely breaking the single responsibility principle.
 
 ### O — Open-Closed Principle
 
@@ -31,3 +50,6 @@ Depend on abstractions, not on concretions.
 A. High level modules should not depend upon low level modules. Both should depend upon abstractions.
 B. Abstractions should not depend upon details. Details should depend upon abstractions.
 
+## Additional resources
+
+- [Series about SOLID](https://stackify.com/solid-design-principles/)
