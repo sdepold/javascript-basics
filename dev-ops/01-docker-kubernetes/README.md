@@ -97,6 +97,11 @@ docker push <registry>/<username>/<project>:1.1.0
 # e.g. docker push <registry>/sdepold/todo-app:1.1.0
 ```
 
+#### 7. Publish the docker image in the registry
+
+For later usage, it is now necessary to find the docker image in the registry and to publish it.
+
+
 ## Kubernetes
 
 TBD: What is it?
@@ -104,80 +109,130 @@ TBD: What is it?
 Cheatsheet: https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources
 Info on DNS: https://tess.io/userdocs/network/kubedns/
 
+### Terminology
+
+#### Application (tess specific)
+
+The application object would let Tess know who the owner is, what kind of application is being deployed, whom we should contact/escalated when required etc. Hence Owner and Escalation Owner fields of an Application object is mandatory. 
+
+#### Deployment
+
+#### Service
+
+#### Namespace
+
+
+#### Pod
+
 ### Steps
 
-#### Create a `deployment.yaml`
+#### 1. Create a `deployment.yaml`
 
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: tododeployment
-  namespace: todonamespace
+  name: todoapp-deployment
+  namespace: todoapp-ns
 spec:
   replicas: 1
   template:
     metadata:
       annotations:
         application.tess.io/name: todoapp
-        account.tess.io/name: {username}
+        account.tess.io/name: sdepold
       labels:
-        run: tododeployment
+        run: todoapp-deployment
     spec:
       containers:
-        - image: <registry>/<username>/todo-fe:1.0.0
-          name: jirastream-fe
+        - name: app
+          image: hub.tess.io/sdepold/todo-app:1.1.0
           ports:
-            - containerPort: 8080
-        - image: <registry>/<username>/todo-be:1.0.0
-          name: jirastream-be
+            - containerPort: 3000
+          env:
+            - name: DATABASE_URL
+              value: 'postgres://postgres:postgres@localhost:5432/todo-app'
+            - name: TEST
+              value: test
+        - name: database
+          image: postgres
           ports:
-            - containerPort: 8081
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_PASSWORD
+              value: 'password'
+          volumeMounts:
+            - name: postgres-initdb
+              mountPath: /docker-entrypoint-initdb.d
+      volumes:
+        - name: postgres-initdb
+          configMap:
+            name: postgres-initdb-config
 ---
 apiVersion: v1
 kind: Service
 metadata:
   annotations:
     application.tess.io/name: todoapp
-    account.tess.io/name: {username}
+    account.tess.io/name: sdepold
   labels:
     name: app
   name: app
-  namespace: todonamespace
+  namespace: todoapp-ns
 spec:
   type: LoadBalancer
   selector:
-    run: tododeployment
+    run: todoapp-deployment
   ports:
     - port: 80
-      targetPort: 8080
-      name: todo-fe
-    - port: 8081
-      targetPort: 8081
-      name: todo-be
+      targetPort: 3000
+      name: app
+    - port: 5432
+      targetPort: 5432
+      name: database
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-initdb-config
+  namespace: todoapp-ns
+data:
+  initdb.sql: |
+    CREATE DATABASE "todo-app";
+    GRANT ALL PRIVILEGES ON DATABASE "todo-app" TO postgres;
 ```
 
-#### Boot your app in the cloud
+#### 2. Useful commands
+
+```bash
+tess describe application <appname> # Get meta information about an application
+tess edit app <appname> # Opens your default text editor and allows editing of apps
+```
+
+#### 3. Boot your app in the cloud
+
+Download the tess CLI from https://tess.io/download/.
 
 ```bash
 tess login -c 32
 tess init
 tess login
 
-tess create namespace todoappnamespace --account {account}
-tess create app todoapp --account {account}
+tess create namespace <namespace> --account <username>
+tess create app todoapp --account <username> --owner=<username> --escalationOwner=<managerUsername>
 tess kubectl create -f deployment.yaml
 ```
 
-#### Updating your app in the cloud
+#### 4. Current status
+
+```bash
+tess kubectl get all -n <namespace> # List all things inside of our namespace
+tess kubectl describe <pid id> -n <namespace> # Print pod details
+tess kubectl logs <pod id> -n <namespace> <container name> # Get the logs of a pod's container
+```
+
+#### 5. Updating your app in the cloud
 
 ```
 tess kubectl apply -f deployment.yaml
-```
-
-#### Debugging
-
-```bash
-tess kubectl get all -n todonamespace # Will list all the things
-tess kubectl describe po/tododeployment-123abc-af12w -n todonamespace # Will print details about the pod creation
 ```
