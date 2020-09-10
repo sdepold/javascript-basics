@@ -4,7 +4,17 @@ This lesson focusses on Docker and Kubernetes.
 
 ## Docker
 
-TBD: What is it?
+### What is it?
+
+- Set of platform as a service (PaaS) products 
+- Uses OS-level virtualization to deliver software in packages called containers
+
+### Components
+
+- Docker daemon: Persistent process that manages Docker containers and handles container objects
+- Docker container: Standardized, encapsulated environment that runs applications
+- Docker image: Read-only template used to build containers
+- Docker registry: Repository for Docker images
 
 ### Steps
 
@@ -28,12 +38,14 @@ yarn start
 # Open http://localhost:3000/tasks
 ```
 
+Please note: Using `yarn start` will actually store the data in-memory and its lost upon restart.
+
 #### 2. Create a `Dockerfile`
 
 Inside your todo-app folder, create a file called `Dockerfile` and add the following content:
 
 ```dockerfile
-FROM node:12
+FROM node:12 
 EXPOSE 3000
 WORKDIR /srv/todo-app
 ADD . /srv/todo-app
@@ -67,6 +79,8 @@ docker ps # find the container id
 docker kill <container id>
 ```
 
+If you run it again, you'll notice that the data disappears.
+
 #### 5. Use a database
 
 Create a local pg database called "todo-app".
@@ -89,6 +103,9 @@ docker build -t <registry>/<username>/<project>:1.1.0 .
 docker run -p 3000:3000 -e DATABASE_URL=postgres://postgres:postgres@host.docker.internal:5432/todo-app <registry>/<username>/<project>:1.1.0
 ```
 
+You should be able to open your application on http://localhost:3000 now.
+The data should be persisted in your local PostgreSQL database.
+
 #### 6. Push the Docker image to the hub
 
 ```bash
@@ -104,15 +121,21 @@ For later usage, it is now necessary to find the docker image in the registry an
 
 ## Kubernetes
 
-TBD: What is it?
+### What is it?
 
-Cheatsheet: https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources
-Info on DNS: https://tess.io/userdocs/network/kubedns/
+- Container-orchestration system for automating computer application deployment, scaling, and management
+- Platform for automating deployment, scaling, and operations of application containers across clusters of hosts
+
+### Cheatsheet
+
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resources
+
 
 ### Terminology
 
-#### Application (tess specific)
+#### Application (tess.io specific)
 
+- Defines the owner 
 The application object would let Tess know who the owner is, what kind of application is being deployed, whom we should contact/escalated when required etc. Hence Owner and Escalation Owner fields of an Application object is mandatory. 
 
 #### Deployment
@@ -126,7 +149,27 @@ The application object would let Tess know who the owner is, what kind of applic
 
 ### Steps
 
-#### 1. Create a `deployment.yaml`
+#### 1. Prepare your environment
+
+Download the tess CLI from https://tess.io/download/.
+
+```bash
+tess login -c 32
+tess init
+tess login
+
+tess create namespace <namespace> --account <username>
+tess create app todoapp --account <username> --owner=<username> --escalationOwner=<managerUsername>
+```
+
+Useful commands related to applications
+
+```bash
+tess describe application <appname> # Get meta information about an application
+tess edit app <appname> # Opens your default text editor and allows editing of apps
+```
+
+#### 2. Create a `deployment.yaml`
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -202,24 +245,9 @@ data:
     GRANT ALL PRIVILEGES ON DATABASE "todo-app" TO postgres;
 ```
 
-#### 2. Useful commands
+#### 3. Deploy
 
-```bash
-tess describe application <appname> # Get meta information about an application
-tess edit app <appname> # Opens your default text editor and allows editing of apps
 ```
-
-#### 3. Boot your app in the cloud
-
-Download the tess CLI from https://tess.io/download/.
-
-```bash
-tess login -c 32
-tess init
-tess login
-
-tess create namespace <namespace> --account <username>
-tess create app todoapp --account <username> --owner=<username> --escalationOwner=<managerUsername>
 tess kubectl create -f deployment.yaml
 ```
 
@@ -231,8 +259,23 @@ tess kubectl describe <pid id> -n <namespace> # Print pod details
 tess kubectl logs <pod id> -n <namespace> <container name> # Get the logs of a pod's container
 ```
 
+#### 4.1. Using your application
+
+When you run `tess kubectl get all -n <namespace>`, you'll find a line which lists the external IP of your application.
+Just open that one in the browser and you should be able to see your todo application.
+
+Let's open the logs and see what happens!
+
+Eventually you should also be able to use the following URL:
+
+```<pod_hostname>.<service_name>.<namespace>.svc.<cluster_number>.tess.io```
+
 #### 5. Updating your app in the cloud
 
 ```
 tess kubectl apply -f deployment.yaml
 ```
+
+#### 6. Misc
+
+Info on DNS: https://tess.io/userdocs/network/kubedns/
