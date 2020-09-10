@@ -135,17 +135,31 @@ https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resourc
 
 #### Application (tess.io specific)
 
-- Defines the owner 
-The application object would let Tess know who the owner is, what kind of application is being deployed, whom we should contact/escalated when required etc. Hence Owner and Escalation Owner fields of an Application object is mandatory. 
-
-#### Deployment
-
-#### Service
+- Every object in tess.io must be assigned to an application
+- Application host meta information about the owner, kind of application and escalation contacts
+- The fields `owner` and `escalation owner` are mandatory respectively
 
 #### Namespace
 
+- Mechanism in multi-user setup to prevent overlaps
+- Every object can be assigned to a particular namespace 
+
+#### ReplicaSets, Replication Controllers and  Deployments
+
+- Deployments are high level management mechanism for ReplicaSets and decide what happens to them in case of a to be rolled out update
+- ReplicaSets declares number of instances of a pod
+- Replication Controllers manage health and scaling of ReplicaSets
 
 #### Pod
+
+- Group of containers
+- Are guaranteed to be co-located and can share resources
+- Can utilize volumes
+
+#### Service
+
+- Set of pods that work together
+- Traffic to pods is balanced in a round-robin manner
 
 ### Steps
 
@@ -255,7 +269,7 @@ tess kubectl create -f deployment.yaml
 
 ```bash
 tess kubectl get all -n <namespace> # List all things inside of our namespace
-tess kubectl describe <pid id> -n <namespace> # Print pod details
+tess kubectl describe <pod id> -n <namespace> # Print pod details
 tess kubectl logs <pod id> -n <namespace> <container name> # Get the logs of a pod's container
 ```
 
