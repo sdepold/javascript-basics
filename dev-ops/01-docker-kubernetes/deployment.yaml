@@ -1,0 +1,71 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: todoapp-deployment
+  namespace: todoapp-ns
+spec:
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        application.tess.io/name: todoapp
+        account.tess.io/name: sdepold
+      labels:
+        run: todoapp-deployment
+    spec:
+      containers:
+        - name: app
+          image: hub.tess.io/sdepold/todo-app:1.1.0
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DATABASE_URL
+              value: 'postgres://postgres:postgres@localhost:5432/todo-app'
+            - name: TEST
+              value: test
+        - name: database
+          image: postgres
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_PASSWORD
+              value: 'password'
+          volumeMounts:
+            - name: postgres-initdb
+              mountPath: /docker-entrypoint-initdb.d
+      volumes:
+        - name: postgres-initdb
+          configMap:
+            name: postgres-initdb-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    application.tess.io/name: todoapp
+    account.tess.io/name: sdepold
+  labels:
+    name: app
+  name: app
+  namespace: todoapp-ns
+spec:
+  type: LoadBalancer
+  selector:
+    run: todoapp-deployment
+  ports:
+    - port: 80
+      targetPort: 3000
+      name: app
+    - port: 5432
+      targetPort: 5432
+      name: database
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-initdb-config
+  namespace: todoapp-ns
+data:
+  initdb.sql: |
+    CREATE DATABASE "todo-app";
+    GRANT ALL PRIVILEGES ON DATABASE "todo-app" TO postgres;

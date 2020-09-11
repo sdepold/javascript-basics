@@ -118,6 +118,10 @@ docker push <registry>/<username>/<project>:1.1.0
 
 For later usage, it is now necessary to find the docker image in the registry and to publish it.
 
+#### 8. Docker Compose
+
+Not covered in this session but Docker allows the orchestration of multi-container application via `docker-compose`.
+Find more info about it here: https://docs.docker.com/compose/
 
 ## Kubernetes
 
@@ -132,6 +136,8 @@ https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resourc
 
 
 ### Terminology
+
+Extensive list: https://kubernetes.io/docs/reference/glossary/?all=true
 
 #### Application (tess.io specific)
 
@@ -150,6 +156,8 @@ https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resourc
 - ReplicaSets declares number of instances of a pod
 - Replication Controllers manage health and scaling of ReplicaSets
 
+![replica-sets](https://lh3.googleusercontent.com/proxy/1AWePSw3lGGsp27Qwle5QxgMQ_rQw-dDyxp1kATdDN7QMjetPWWLrxAiy-Vy6vdR5AMI8EBQ0Lgjwbb88MWII9REI1PXBxYddU3D-Q2AXxDGY4_doPzyyxsSgRM)
+
 #### Pod
 
 - Group of containers
@@ -160,6 +168,9 @@ https://kubernetes.io/docs/reference/kubectl/cheatsheet/#viewing-finding-resourc
 
 - Set of pods that work together
 - Traffic to pods is balanced in a round-robin manner
+- Has external IP address
+
+![service](https://upload.wikimedia.org/wikipedia/commons/6/63/Pod-networking.png)
 
 ### Steps
 
