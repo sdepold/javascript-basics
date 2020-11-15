@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+header .app-name {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+}
