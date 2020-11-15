@@ -17,7 +17,7 @@
     "morgan": "^1.9.1",
     "pg": "^8.3.3",
     "require-dir-all": "^0.4.15",
-    "sequelize": "^4.42.0",
+    "sequelize": "^5.15.1",
     "sqlite3": "^4.0.6",
     "uuid": "^3.3.2"
   }
