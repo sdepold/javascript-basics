@@ -3,6 +3,9 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const Sequelize = require("sequelize");
 const cors = require("cors");
+const cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
+const SessionStore = require('express-session-sequelize')(expressSession.Store);
 
 const app = express();
 
@@ -11,15 +14,27 @@ global.sequelize = new Sequelize(null, null, null, {
   storage: "database.sqlite",
 });
 
+const sequelizeSessionStore = new SessionStore({
+  db: global.sequelize,
+});
+
 app.use(morgan("dev"));
 app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(cookieParser());
+app.use(expressSession({
+  secret: 'keep it secret, keep it safe.',
+  store: sequelizeSessionStore,
+  resave: false,
+  saveUninitialized: false,
+}));
 
 // Routes are registered here
 app.use("/", require("./routes/home"));
 app.use("/users", require("./routes/users"));
+app.use("/sessions", require("./routes/sessions"));
 app.use("/hello", require("./routes/hello"));
 
 (async () => {

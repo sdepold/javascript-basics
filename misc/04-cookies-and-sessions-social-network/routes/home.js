@@ -1,9 +1,10 @@
 const { Router } = require("express");
 const router = Router();
-const homeView = require('../views/home')
+const homeView = require("../views/home");
+const User = require("../models/user");
 
-router.get("/", (req, res) => {
-  res.send(homeView());
+router.get("/", async (req, res) => {
+  res.send(homeView({ user: req.session.user }));
 });
 
 module.exports = router;

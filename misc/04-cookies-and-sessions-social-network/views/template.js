@@ -1,7 +1,7 @@
 function getHeader(user) {
   const userContent = user
-    ? `${user.username} | <a href="/logout">Logout</a>`
-    : `<a href="/users/register">Register</a>`;
+    ? `${user.username} | <a href="/sessions/logout">Logout</a>`
+    : `<a href="/sessions/login">Login</a> | <a href="/users/register">Register</a>`;
 
   return `
         <header>

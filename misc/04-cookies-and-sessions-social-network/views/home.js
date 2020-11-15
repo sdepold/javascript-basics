@@ -1,5 +1,5 @@
-const template = require('./template');
+const template = require("./template");
 
-module.exports = () => {
-    return template();
+module.exports = ({ user }) => {
+  return template({ user });
 };
