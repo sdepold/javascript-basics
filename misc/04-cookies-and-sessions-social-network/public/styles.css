@@ -17,3 +17,20 @@ header .app-name {
     padding: 0;
     text-transform: uppercase;
 }
+
+.images {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.images .image {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+}
+
+.images .image img {
+    width: 200px;
+    height: 200px;
+    object-fit: fill;
+}
