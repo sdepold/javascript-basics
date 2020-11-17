@@ -6,16 +6,19 @@ module.exports = ({ error } = {}) => {
   return template(
     {},
     `
-      <form action="/users/register" method="POST">
-        <label>
-            Username:
-            <input type="text" name="username">
-        </label>
+      <div class="register">
+        <h2>Register</h2>
+        <form action="/users/register" method="POST">
+          <label>
+              Username:
+              <input type="text" name="username">
+          </label>
 
-        ${errorContent}
+          ${errorContent}
 
-        <input type="submit" value="Register">
-      </form>
+          <input type="submit" value="Register">
+        </form>
+      </div>
     `
   );
 };

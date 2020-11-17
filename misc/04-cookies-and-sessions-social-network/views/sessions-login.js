@@ -6,6 +6,9 @@ module.exports = ({ error } = {}) => {
   return template(
     {},
     `
+      <div class="login">
+        <h2>Login</h2>
+      
         <form action="/sessions/login" method="POST">
             <label>
                 Username:
@@ -16,6 +19,7 @@ module.exports = ({ error } = {}) => {
 
             <input type="submit" value="Login">
         </form>
+      </div>
     `
   );
 };
