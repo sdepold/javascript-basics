@@ -32,5 +32,16 @@ header .app-name {
 .images .image img {
     width: 200px;
     height: 200px;
-    object-fit: fill;
+    object-fit: cover;
+}
+
+.images .new-image a {
+    text-decoration: none;
+    font-size: 100px;
+    color: #ccc;
+    height: 200px;
+    width: 200px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 }

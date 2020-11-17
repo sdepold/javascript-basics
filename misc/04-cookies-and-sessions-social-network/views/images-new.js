@@ -3,7 +3,7 @@ const template = require("./template");
 module.exports = ({ error } = {}) => {
   return template(
     {},
-    () => `
+    `
         <form action="/images/new" method="POST" enctype='multipart/form-data'>
             <label>
                 Image:

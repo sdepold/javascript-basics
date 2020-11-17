@@ -11,7 +11,7 @@ function getHeader(user) {
     `;
 }
 
-module.exports = ({ user } = {}, yield) => `
+module.exports = ({ user } = {}, yield='') => `
     <html>
         <head>
             <title>Social Network App</title>
@@ -19,7 +19,7 @@ module.exports = ({ user } = {}, yield) => `
         </head>
         <body>
             ${getHeader(user)}
-            ${yield ? yield() : ''}
+            ${yield}
         </body>
     </html>
 `;

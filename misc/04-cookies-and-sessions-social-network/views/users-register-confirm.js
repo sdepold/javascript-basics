@@ -1,7 +1,9 @@
-const template = require('./template');
+const template = require("./template");
 
-module.exports = ({user}) => {
-    return template({}, () => `
+module.exports = ({ user }) => {
+  return template(
+    {},
+    `
         <p>Hey ${user.username}! 👋</p>
         <p>Glad to have you around! The registration was completed!</p>
         <p>You'll be redirected to the main home page now.</p>
@@ -11,5 +13,6 @@ module.exports = ({user}) => {
                 document.location.href="/";
             }, 5000);
         </script>
-    `);
+    `
+  );
 };

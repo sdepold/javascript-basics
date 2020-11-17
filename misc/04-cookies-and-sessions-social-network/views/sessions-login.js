@@ -5,7 +5,7 @@ module.exports = ({ error } = {}) => {
 
   return template(
     {},
-    () => `
+    `
         <form action="/sessions/login" method="POST">
             <label>
                 Username:

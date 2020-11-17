@@ -5,17 +5,17 @@ module.exports = ({ error } = {}) => {
 
   return template(
     {},
-    () => `
-        <form action="/users/register" method="POST">
-            <label>
-                Username:
-                <input type="text" name="username">
-            </label>
+    `
+      <form action="/users/register" method="POST">
+        <label>
+            Username:
+            <input type="text" name="username">
+        </label>
 
-            ${errorContent}
+        ${errorContent}
 
-            <input type="submit" value="Register">
-        </form>
+        <input type="submit" value="Register">
+      </form>
     `
   );
 };

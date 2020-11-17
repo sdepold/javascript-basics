@@ -1,18 +1,37 @@
 const template = require("./template");
 
-module.exports = ({ user, images=[] }) => {
-  const imagesContent = images.map((image) => `
+function getImage(image) {
+  return `
     <div class="image">
       <img src="/uploads/${image.filename}" />
     </div>
-  `).join('');
+  `;
+}
 
-  const newImageContent = user ? '<a href="/images/new">Upload new image</a>' : '';
+function getImages(images) {
+  return images.map(getImage).join("");
+}
 
-  return template({ user }, () => `
-    <div class="images">
-      ${imagesContent}
-      ${newImageContent}
+function getNewImage(user) {
+  if (!user) {
+    return "";
+  }
+
+  return `
+    <div class="image new-image">
+      <a href="/images/new">+</a>
     </div>
-  `);
+  `;
+}
+
+module.exports = ({ user, images = [] }) => {
+  return template(
+    { user },
+    `
+      <div class="images">
+        ${getImages(images)}
+        ${getNewImage(user)}
+      </div>
+    `
+  );
 };
