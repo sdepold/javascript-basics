@@ -1,15 +1,19 @@
 const template = require("./template");
 
-function getImage(image) {
+function getImage(user, image) {
   return `
     <div class="image">
       <img src="/uploads/${image.filename}" />
+      <div class="meta">
+        <div class="author">👤 ${user.username}</div>
+        <div class="comments">💬 0</div>
+      </div>
     </div>
   `;
 }
 
-function getImages(images) {
-  return images.map(getImage).join("");
+function getImages(user, images) {
+  return images.map((image) => getImage(user, image)).join("");
 }
 
 function getNewImage(user) {
@@ -29,7 +33,7 @@ module.exports = ({ user, images = [] }) => {
     { user },
     `
       <div class="images">
-        ${getImages(images)}
+        ${getImages(user, images)}
         ${getNewImage(user)}
       </div>
     `

@@ -21,8 +21,8 @@ router.post("/new", async (req, res) => {
 
     await req.files.data.mv(path.resolve(UPLOAD_PATH, filename));
 
-    const user = await User.findOne({ where: { id: req.session.id } });
-    const image = await Image.create({ filename, user });
+    const user = await User.findOne({ where: { id: req.session.user.id } });
+    const image = await user.createImage({filename});
 
     return res.redirect(`/?highlight=${image.id}`);
   } catch (e) {

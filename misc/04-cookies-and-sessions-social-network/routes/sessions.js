@@ -16,8 +16,10 @@ router.post("/login", async (req, res) => {
           id: user.id,
           username: user.username
       };
-      res.redirect("/");
+      return res.redirect("/");
   }
+
+  console.error('User not found… Handle this gracefully!')
 });
 
 router.get("/logout", (req, res) => {

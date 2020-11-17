@@ -45,3 +45,9 @@ header .app-name {
     text-align: center;
     vertical-align: middle;
 }
+
+.images .meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
