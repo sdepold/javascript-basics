@@ -3,7 +3,9 @@ const template = require("./template");
 function getImage(user, image) {
   return `
     <div class="image">
-      <img src="/uploads/${image.filename}" />
+      <a href="/images/${image.id}">
+        <img src="/uploads/${image.filename}" />
+      </a>
       <div class="meta">
         <div class="author">👤 ${user.username}</div>
         <div class="comments">💬 0</div>
