@@ -1,8 +1,8 @@
 const template = require("./template");
 
-module.exports = ({ error } = {}) => {
+module.exports = (params) => {
   return template(
-    {},
+    params,
     `
         <form action="/images/new" method="POST" enctype='multipart/form-data'>
             <label>

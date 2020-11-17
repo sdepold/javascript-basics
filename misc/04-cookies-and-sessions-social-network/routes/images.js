@@ -3,13 +3,13 @@ const router = Router();
 
 const imagesNewView = require("../views/images-new");
 const imagesShowView = require("../views/images-show");
-const { Image, User } = require("../models");
+const { Image, User, Comment } = require("../models");
 const path = require("path");
 
 const UPLOAD_PATH = path.resolve(__dirname, "../public/uploads");
 
 router.get("/new", (req, res) => {
-  res.send(imagesNewView());
+  res.send(imagesNewView({ user: req.session.user }));
 });
 
 router.post("/new", async (req, res) => {
@@ -34,10 +34,18 @@ router.post("/new", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const image = await Image.findOne({
     where: { id: req.params.id },
-    include: [User],
+    include: { all: true, nested: true },
   });
 
-  res.send(imagesShowView({ image }));
+  res.send(imagesShowView({ user: req.session.user, image }));
+});
+
+router.post("/:id/comments", async (req, res) => {
+  let image = await Image.findOne({ where: { id: req.params.id } });
+
+  image.createComment({ text: req.body.comment, userId: req.session.user.id });
+
+  res.redirect(302, `/images/${image.id}`);
 });
 
 module.exports = router;

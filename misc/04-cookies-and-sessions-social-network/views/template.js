@@ -5,7 +5,7 @@ function getHeader(user) {
 
   return `
         <header>
-            <h1 class="app-name">Social Network App 🙋‍♀️</h1>
+            <h1 class="app-name"><a href="/">Social Network App 🙋‍♀️</a></h1>
             <div class="user">${userContent}</div>
         </header>
     `;

@@ -1,66 +1,105 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
-    display: flex;
-    border-bottom: 1px solid #ccc;
-    padding: 20px;
-    justify-content: space-between;
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  padding: 20px;
+  justify-content: space-between;
 }
 
 header .app-name {
-    font-size: 16px;
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
 }
 
 .images {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .images .image {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
 }
 
 .images .image img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
 }
 
 .images .new-image a {
-    text-decoration: none;
-    font-size: 100px;
-    color: #ccc;
-    height: 200px;
-    width: 200px;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
+  text-decoration: none;
+  font-size: 100px;
+  color: #ccc;
+  height: 200px;
+  width: 200px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
 }
 
-.images .meta {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+.images .meta,
+.image-show .meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 .image-show {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px auto;
-    width: 600px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px auto;
+  width: 600px;
 }
 
 .image-show img {
-    width: 600px;
-    height: 600px;
-    object-fit: cover;
+  width: 600px;
+  height: 600px;
+  object-fit: cover;
+}
+
+.image-show .comments {
+  margin: 10px 0;
+}
+
+.image-show .comments .comment {
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.image-show .comments .author {
+  font-weight: bold;
+  display: inline;
+}
+
+.image-show .comments .content {
+  display: inline;
+}
+
+.image-show .create-comment {
+    margin-top: 40px;
+}
+
+.image-show .create-comment form {
+    margin: 0;
+}
+
+.image-show .create-comment textarea {
+  display: block;
+  width: 100%;
+  height: 50px;
+  margin: 10px 0;
+}
+
+h1 a {
+    text-decoration: none;
+    color: black;
 }
