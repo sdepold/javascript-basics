@@ -53,7 +53,11 @@ header .app-name {
   margin-top: 10px;
 }
 
-.image-show, .login, .register, .register-confirm {
+.image-show,
+.login,
+.register,
+.register-confirm,
+.images-new {
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px auto;
@@ -85,11 +89,11 @@ header .app-name {
 }
 
 .image-show .create-comment {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .image-show .create-comment form {
-    margin: 0;
+  margin: 0;
 }
 
 .image-show .create-comment textarea {
@@ -100,15 +104,15 @@ header .app-name {
 }
 
 h1 a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .login form {
   margin: 0;
 }
 
-.login form input[type="submit"], .register form input[type="submit"] {
+form input[type="submit"] {
   margin-top: 10px;
   display: block;
 }
