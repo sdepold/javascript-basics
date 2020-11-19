@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const router = Router();
+const controller = Router();
 
 const imagesNewView = require("../views/images-new");
 const imagesShowView = require("../views/images-show");
@@ -8,11 +8,11 @@ const path = require("path");
 
 const UPLOAD_PATH = path.resolve(__dirname, "../public/uploads");
 
-router.get("/new", (req, res) => {
+controller.get("/new", (req, res) => {
   res.send(imagesNewView({ user: req.session.user }));
 });
 
-router.post("/new", async (req, res) => {
+controller.post("/new", async (req, res) => {
   if (!req.files.data) {
     throw new Error("No files was uploaded!");
   }
@@ -31,7 +31,7 @@ router.post("/new", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+controller.get("/:id", async (req, res) => {
   const image = await Image.findOne({
     where: { id: req.params.id },
     include: { all: true, nested: true },
@@ -40,7 +40,7 @@ router.get("/:id", async (req, res) => {
   res.send(imagesShowView({ user: req.session.user, image }));
 });
 
-router.post("/:id/comments", async (req, res) => {
+controller.post("/:id/comments", async (req, res) => {
   let image = await Image.findOne({ where: { id: req.params.id } });
 
   image.createComment({ text: req.body.comment, userId: req.session.user.id });
@@ -48,4 +48,4 @@ router.post("/:id/comments", async (req, res) => {
   res.redirect(302, `/images/${image.id}`);
 });
 
-module.exports = router;
+module.exports = controller;

@@ -1,14 +1,14 @@
 const { Router } = require("express");
-const router = Router();
+const controller = Router();
 const usersRegisterView = require("../views/users-register");
 const usersRegisterConfirmView = require("../views/users-register-confirm");
 const User = require("../models/user");
 
-router.get("/register", (req, res) => {
+controller.get("/register", (req, res) => {
   res.send(usersRegisterView());
 });
 
-router.post("/register", async (req, res) => {
+controller.post("/register", async (req, res) => {
   try {
     const user = await User.create({ username: req.body.username });
     return res.send(usersRegisterConfirmView({ user }));
@@ -23,4 +23,4 @@ router.post("/register", async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = controller;

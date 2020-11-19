@@ -34,11 +34,11 @@ app.use(expressSession({
 }));
 
 // Routes are registered here
-app.use("/", require("./routes/home"));
-app.use("/users", require("./routes/users"));
-app.use("/sessions", require("./routes/sessions"));
-app.use("/images", require("./routes/images"));
-app.use("/hello", require("./routes/hello"));
+app.use("/", require("./controllers/home"));
+app.use("/users", require("./controllers/users"));
+app.use("/sessions", require("./controllers/sessions"));
+app.use("/images", require("./controllers/images"));
+app.use("/hello", require("./controllers/hello"));
 
 (async () => {
   // Synchronize our models with the database

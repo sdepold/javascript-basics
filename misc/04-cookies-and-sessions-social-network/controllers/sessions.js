@@ -1,14 +1,14 @@
 const { Router } = require("express");
-const router = Router();
+const controller = Router();
 
 const User = require('../models/user');
 const sessionsLoginView = require("../views/sessions-login");
 
-router.get("/login", (req, res) => {
+controller.get("/login", (req, res) => {
   res.send(sessionsLoginView());
 });
 
-router.post("/login", async (req, res) => {
+controller.post("/login", async (req, res) => {
   const user = await User.findOne({ where: { username: req.body.username } });
 
   if(user) {
@@ -22,7 +22,7 @@ router.post("/login", async (req, res) => {
   console.error('User not found… Handle this gracefully!')
 });
 
-router.get("/logout", (req, res) => {
+controller.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       return console.log(err);
@@ -31,4 +31,4 @@ router.get("/logout", (req, res) => {
   });
 });
 
-module.exports = router;
+module.exports = controller;
