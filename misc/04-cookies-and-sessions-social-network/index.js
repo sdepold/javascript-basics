@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const Sequelize = require("sequelize");
-const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
 const expressSession = require('express-session');
@@ -19,14 +18,12 @@ const sequelizeSessionStore = new SessionStore({
   db: global.sequelize,
 });
 
-app.use(morgan("dev"));
-app.use(express.static("public"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(fileUpload({ createParentPath: true }));
-app.use(cors());
-app.use(cookieParser());
-app.use(expressSession({
+app.use(morgan("dev")); // Logs request status and duration
+app.use(express.static("public")); // Serves files in the public directory
+app.use(bodyParser.urlencoded({ extended: true })); // Parses request bodies
+app.use(fileUpload({ createParentPath: true })); // Converts file uploads
+app.use(cookieParser()); // Parses request headers and parses the cookies
+app.use(expressSession({ // Configures session handling
   secret: 'keep it secret, keep it safe.',
   store: sequelizeSessionStore,
   resave: false,
