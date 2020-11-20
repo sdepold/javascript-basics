@@ -8,30 +8,6 @@ function getCookies() {
     }, {});
 }
 
-function getImageComment(imageId) {
-  return decodeURIComponent(getCookies()[`image-${imageId}`] || "");
-}
-
-function persistImageComment(imageId, comment) {
-  document.cookie = `image-${imageId}=${encodeURIComponent(comment)}`;
-}
-
 window.addEventListener("load", function () {
-  const form = document.querySelector(".create-comment form");
-  const textarea = form.querySelector("#comment-content");
-
-  if (!textarea) {
-    return;
-  }
-
-  const imageId = Number(textarea.getAttribute("data-image-id"));
-
-  textarea.value = getImageComment(imageId);
-  textarea.addEventListener("keyup", (e) => {
-    persistImageComment(imageId, e.target.value);
-  });
-
-  form.addEventListener("submit", () => {
-    persistImageComment(imageId, "");
-  });
+  
 });
