@@ -1,0 +1,16 @@
+{
+  "name": "03-graphql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.4.0",
+    "graphql-relay": "^0.6.0",
+    "graphql-sequelize": "^9.4.0",
+    "sequelize": "^6.3.5",
+    "sqlite": "^4.0.19",
+    "sqlite3": "^5.0.0"
+  }
+}
