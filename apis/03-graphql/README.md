@@ -2,21 +2,24 @@
 
 ## What is GraphQL
 
-- Query language for APIs 
-- Runtime for fulfilling those queries with your existing data
+- Query and manipulation language for APIs 
+- Runtime for fulfilling queries with your existing data
+- Originally developed by Facebook
+- Alternative approach to REST
 
 ## Why would you need it?
 
 - Load only the data you need
-- Load multiple resource types in a single request
-- Type system
+- Load multiple nested resources in a single request
+- Gives clients more control over the data needed
+- Can drastically reduce the amount of requests and network traffic which is particularly interesting on mobile device 
 
 ## Terminology
 
 ### Scalar
 
 - One of the two atomic types in GraphQL
-- Pointer to types
+- Represent the leaf types of a query (the eventual data type something is resolving to)
 - 5 built-in Scalars: Int, Float, String, Boolean, ID
 
 ## Additional readings
