@@ -5,6 +5,7 @@ Some lessons about JavaScript development
 ## APIs
 
 - [RESTful APIs](./apis/01-restful-apis)
+- [GraphQL](./apis/03-graphql)
 
 ## Architecture
 
