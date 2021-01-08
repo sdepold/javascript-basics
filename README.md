@@ -33,6 +33,7 @@ Some lessons about JavaScript development
 - [Cookies](./misc/01-cookies)
 - [Sessions](./misc/02-sessions)
 - [Open Source](./misc/03-open-source-work)
+- [Cookies and Sessions – the remix](./misc/04-cookies-and-sessions-social-network)
 
 ## Testing
 
