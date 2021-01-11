@@ -18,7 +18,7 @@ module.exports = buildSchema(`
     }
 
     type Query {
-        users(id: Int, name: String, createdAt: String, updatedAt: String, include: [String]): [User]
+        users(id: Int, name: String, createdAt: String, updatedAt: String): [User]
         tasks(id: Int, userId: Int, title: String, createdAt: String, updatedAt: String): [Task]
     }
 

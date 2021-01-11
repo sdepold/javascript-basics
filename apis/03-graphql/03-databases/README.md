@@ -39,7 +39,7 @@ mutation {
 
 ```
 {
-  users(include: ["tasks"]) {
+  users {
     name
     tasks {
       id
