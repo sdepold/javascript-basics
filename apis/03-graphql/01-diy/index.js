@@ -11,6 +11,17 @@ const server = http.createServer(
     const request = `${req.method} ${url.parse(req.url).pathname}`;
 
     if (request === "GET /") {
+      return graphql(schema, req.query.q, apiRoot).then((response) => {
+        res.setHeader("Content-Type", "application/json");
+
+        if (response.errors) {
+          res.writeHead(400);
+          return res.end(JSON.stringify(response.errors.map((e) => e.message)));
+        }
+        
+        res.end(JSON.stringify(response.data));
+      });
+
       return res.end("Only POST calls with GraphQL queries allowed!");
     }
 

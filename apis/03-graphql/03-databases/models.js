@@ -12,7 +12,7 @@ let Task = sequelize.define("task", {
   title: Sequelize.STRING,
 });
 
-User.Tasks = User.hasMany(Task, { as: "tasks" });
+User.hasMany(Task, { as: "tasks" });
 
 module.exports = {
   sequelize,
