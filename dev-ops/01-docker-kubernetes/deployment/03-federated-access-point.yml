@@ -1,0 +1,50 @@
+---
+apiVersion: apps.tess.io/v1alpha3
+kind: AccessPoint
+metadata:
+  name: ap-one-layer
+  namespace: ns
+  annotations:
+    # Protego will automatically sign and renew the TLS/SSL certificate for you, 
+    # though the cert provider is not required if you're using sole HTTP
+    gateway.network.tess.io/cert-provider: protego
+    # required for creating cms model
+    models.tess.io/cms-requested: 'true'
+spec:
+  accessPoints:
+    - name: app
+      scopeIDs:
+        # spcify which clusters the spec will be synced to. For this example, they're cluster 32 and 33
+        - "32"
+        - "33"
+      scopeType: Cluster
+      traffic:
+        services:
+          - apiVersion: v1
+            kind: Service
+            metadata:
+              name: mysvc
+            annotations:
+              # specify "tlb-lbms" as the lb provider
+              network.tess.io/lbprovider: tlb-lbms
+              # port 80 is defined as HTTP and port 443 is defined as TLS/SSL
+              gateway.network.tess.io/protocols: '{"80":{"vip_protocol":"HTTP"}, "443":{"vip_protocol":"SSL"}}'
+            spec:
+              ports:
+                - name: http
+                  port: 80
+                  # Note: the protocol here is still TCP because native Kubernetes service only distinguishes Layer 4 protocols
+                  protocol: TCP
+                  targetPort: 80
+                - name: http1
+                  port: 443
+                  # Note: the protocol here is still TCP because native Kubernetes service only distinguishes Layer 4 protocols
+                  protocol: TCP
+                  targetPort: 443
+              selector:
+                app: myapp
+              type: LoadBalancer
+  applicationInstanceRef:
+    kind: ApplicationInstance
+    name: foo-ai
+    namespace: ns

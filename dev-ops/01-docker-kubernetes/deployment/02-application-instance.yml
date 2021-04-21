@@ -1,0 +1,14 @@
+---
+apiVersion: apps.tess.io/v1alpha2
+deploymentTemplate:
+  name: sdepoldtodoapp-tfdt
+  namespace: sdepoldtodoapp-dev
+application:
+  name: sdepoldtodoapp
+kind: ApplicationInstance
+metadata:
+  name: sdepoldtodoapps-appinstance # the name of our application instance
+  namespace: sdepoldtodoapp-dev
+type:
+  category: web
+  type: generic

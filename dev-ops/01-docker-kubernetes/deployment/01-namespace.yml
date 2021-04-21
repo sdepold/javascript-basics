@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    application.tess.io/name: sdepoldtodoapp
+    environment.tess.io/name: dev
+    sync.controller.federation.tess.io/cluster-selector: '[{"key": "cluster.cr.tess.io/name", "operator": "Exists"}]'
+  labels:
+    account.tess.io/name: sdepold
+    sync.controller.federation.tess.io/watch: "true"
+  name: sdepoldtodoapp-dev # This is the name of the namespace we are creating now!
