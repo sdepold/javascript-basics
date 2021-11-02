@@ -1,0 +1,21 @@
+{
+  "name": "01-model-view-controller",
+  "version": "1.0.0",
+  "description": "Session about the MVC pattern",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "start:db": "node index.db.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "require-dir-all": "^0.4.15",
+    "uuid": "^3.3.2"
+  }
+}

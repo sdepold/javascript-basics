@@ -20,6 +20,11 @@ upstream todo_api {
     keepalive 8;
 }
 
+upstream todo_other_fe {
+    server 127.0.0.1:7000;
+    keepalive 8;
+}
+
 # the nginx server instance
 server {
     listen 1234;
@@ -36,6 +41,16 @@ server {
       proxy_set_header X-NginX-Proxy true;
 
       proxy_pass http://todo_api/;
+      proxy_redirect off;
+    }
+
+    location /other_fe/ {
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_set_header X-NginX-Proxy true;
+
+      proxy_pass http://todo_other_fe/;
       proxy_redirect off;
     }
 
@@ -64,7 +79,7 @@ Load the nginx config via
 brew services start nginx
 ```
 
-You can now talk to the FE via http://localhost:1234/tasks and to the BE via http://localhost:1234/api/tasks.
+You can now talk to the FE via http://localhost:1234/tasks and to the BE via http://localhost:1234/api/tasks or the other FE: http://localhost:1234/other_fe.
 
 ## Make use of the LB
 
