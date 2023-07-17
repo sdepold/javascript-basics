@@ -10,7 +10,7 @@
 
 - Contains the business logic
 - Defines the structure of data
-- Knows how to store and retrieve data from potentially remote storages
+- Knows how to store and retrieve data from potential remote storages
 
 ### View
 
